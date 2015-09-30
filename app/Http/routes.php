@@ -11,5 +11,5 @@
 |
 */
 
-Route::get('/','PagesController@showWelcome');
+
 Route::get('/login','PagesController@showLogin');
