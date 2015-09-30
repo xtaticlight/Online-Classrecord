@@ -9,12 +9,8 @@ use App\Http\Controllers\Controller;
 
 class PagesController extends Controller
 {
-    function showWelcome(){
-      return view('welcome');
+    function showLogin() {
 
-    }
-    function showError() {
-
-      return view('errors.503');
+      return view('pages.login');
     }
 }

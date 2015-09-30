@@ -12,4 +12,4 @@
 */
 
 Route::get('/','PagesController@showWelcome');
-Route::get('/error','PagesController@showError');
+Route::get('/login','PagesController@showLogin');
