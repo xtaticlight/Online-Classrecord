@@ -13,3 +13,4 @@
 
 Route::get('/','PagesController@showWelcome');
 Route::get('/error','PagesController@showError');
+Route::get('/error12','PagesController@showError');
