@@ -11,6 +11,9 @@
 |
 */
 
+Route::get('/','PagesController@showWelcome');
+Route::get('/error','PagesController@showError');
+Route::get('/error12','PagesController@showError');
 
 Route::get('/login','PagesController@showLogin');
 Route::post('/signin','PagesController@postSignin');
