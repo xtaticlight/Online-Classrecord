@@ -1,130 +1,59 @@
-@extends('main')
-@section('content')
-    <title>Home - Login</title>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0047)http://utilities.must.edu.ph/MUST_SIS/home.aspx -->
+<link href="./assets/css/bootstrap.css" rel="stylesheet"/>
+<link href="./assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href="./assets/css/style.css" rel="stylesheet"> </link>
+<link href="./assets/css/style-responsive.css" rel="stylesheet"/>
+<link href="./assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="./assets/css/StyleSheet.css" type="text/css" rel="stylesheet"> </link>
+
+        <title>Home - Login</title>
+    </head>
+
     <body class="master_style">
 
-<form method="post" action="./subjects_files/index.html" onsubmit="javascript:return WebForm_OnSubmit();" id="form1" class="page_style">
+        <form method="post" action="/e-class-record/public/signin" id="form1" class="page_style">
+            <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+            <img id="Image1" src="./assets/img/banner.png" style="width:100%;"> </img>
 
-<img id="Image1" src="./assets/img/banner.png" style="width:100%;">
+            <div class="styleling" style="height: 450px"
+                 <div class="container animated fadeIn">
 
-<table id="tblBg" width="800">
-<tbody><tr><td style="text-align: right; width: 800px;" valign="top">
-    &nbsp;<span id="lblVersion" style="color:#004000;">Build 2012.06.13</span></td></tr>
-    <tr>
-        <td valign="top" style="width: 800px">
-    <table style="width: 100%">
-        <tbody><tr>
-            <td>
-    
-                <table cellpadding="0" cellspacing="0" style="font-size: x-small">
-                    <tbody><tr>
-                        <td valign="top">
-                            
-                                            <table border="0" cellpadding="1" cellspacing="0" style="border-collapse: collapse">
-                                                <tbody><tr>
-                                                    <td valign="bottom">
-                                                        <table border="0" cellpadding="0">
-                                                            <tbody><tr>
-                                                                <td align="right">
-                                                                </td>
-                                                                <td colspan="3" valign="bottom">
-                                                                    <span id="LoginView1_Label1" class="color1">You are not logged In</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td align="right">
-                                                                </td>
-                                                                <td valign="bottom">
-                                                                    <label for="LoginView1_tbUserName" id="LoginView1_UserNameLabel">User Name:</label>
-                                                                    <span id="LoginView1_UserNameRequired" title="User Name is required." style="visibility:hidden;">*</span></td>
-                                                                <td valign="bottom">
-                                                                    <label for="LoginView1_tbPassword" id="LoginView1_PasswordLabel">Password:</label>
-                                                                    <span id="LoginView1_PasswordRequired" title="Password is required." style="visibility:hidden;">*</span></td>
-                                                                <td valign="bottom">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td align="right">
-                                                                </td>
-                                                                <td valign="bottom">
-                                                                    <input name="ctl00$LoginView1$tbUserName" type="text" id="LoginView1_tbUserName" class="clTextBox" style="height:15px;width:100px;">&nbsp;
-                                                                </td>
-                                                                <td valign="bottom">
-                                                                    <input name="ctl00$LoginView1$tbPassword" type="password" id="LoginView1_tbPassword" class="clTextBox" style="height:15px;width:100px;"></td>
-                                                                <td valign="bottom">
-                                                                    &nbsp;<input type="submit" name="ctl00$LoginView1$btnLogin" value="Log In" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$LoginView1$btnLogin&quot;, &quot;&quot;, true, &quot;ctl00$ctl00$Login1&quot;, &quot;&quot;, false, false))" id="LoginView1_btnLogin" class="clButton" style="height:20px;width:50px;"></td>
-                                                            </tr>
-                                                        </tbody></table>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td valign="bottom">
-                                                        <span id="LoginView1_lblMsg" style="color:Red;"></span></td>
-                                                </tr>
-                                            </tbody></table>
-                                
-                        </td>
-                    </tr>
-                </tbody></table>
-                &nbsp;
-            
-            </td>
-            <td style="text-align: right" valign="top">
-                <span id="Label2" class="color1" style="font-family:Bodoni MT;font-size:38pt;">ESOnline</span><br>
-                <span id="Label3">Online Class Record Encoding</span></td>
-        </tr>
-    </tbody></table>
-        </td>
-    </tr>
-    <tr><td style="height:50px; width: 800px;" valign="bottom">
-        <table cellpadding="0" cellspacing="0" style="width: 100%">
-            <tbody><tr>
-                <td valign="middle">
-                    <a id="lbMain" href="javascript:__doPostBack('ctl00$lbMain','')">MUST Website</a>
-                    &gt;
-        <span id="SiteMapPath1"><a href="http://utilities.must.edu.ph/MUST_SIS/home.aspx#SiteMapPath1_SkipLink"><img alt="Skip Navigation Links" height="0" width="0" src="./subjects_files/WebResource(2).axd" style="border-width:0px;"></a><span>HOME</span><a id="SiteMapPath1_SkipLink"></a></span>
-                </td>
-                <td style="text-align: right" valign="bottom">
-                </td>
-            </tr>
-        </tbody></table>
-        &nbsp;
-        
-    </td></tr>
-<tr><td style="height:400px; width: 800px;" valign="top">
-    
+                    <div class="form-group col-lg-2 col-md-2 col-xs-2">
+                        <br/>
+                        <label>Username:</label>
+                        <input type="text" tabindex="1" style="height: 22px; width: 120px" class="form-control" name="username" autofocus/>
 
-        
+                        <br></br><a id="lbMain" href="http://www.must.edu.ph/">MUST&nbsp;Website</a>&nbsp;&gt;&nbsp;<span>HOME</span>
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2 col-xs-2">
+                        <br/>
+                        <label>Password:</label>
+                        <input type="password" tabindex="2" style="height: 22px; width: 120px" class="form-control" name="password">
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2 col-xs-2" style="margin-top: 20px">
+                        <br/>
+                        <input class="btn-theme btn-block" tabindex="3" style="height: 22px; width: 50px" type="submit" value="Login"/>
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2 col-xs-2" style="margin-left: 165px">
+                        <span id="lblVersion" style="color:#004000;">Build 2012.06.13</span>
+                        <span id="Label2" class="color1" style="font-family:Bodoni MT;font-size:38pt;">ESOnline</span><br>
+                            <span id="Label3">Online&nbsp;Class&nbsp;Record&nbsp;Encoding</span>
+                    </div>
 
-   
-    <input type="hidden" name="ctl00$ContentPlaceHolder1$hfStudentNo" id="ContentPlaceHolder1_hfStudentNo">
+                    <div class="row mb">
 
-        &nbsp;
+                    </div>
 
-</td></tr>
-</tbody></table>
-        <img id="Image3" src="./assets/img/wave.jpg" style="width:100%;">
- <img id="Image2" src="./assets/img/cmubanner2.png" style="width:100%;">
-        <div id="pnlConsole" style="width: 830px; left: 268px; top: 293px; position: fixed;">
-	
-            <center>
-                 <div id="UpdateProgress1" style="display:none;" role="status" aria-hidden="true">
-		
-                        <img id="imgLoading" src="./assets/img/loading.gif">
-                    
-	</div>
-                &nbsp;</center>
-        
-</div>
-        
-        &nbsp;
+                </div>
 
-<div style="background-color:Yellow; color:Red">
-<center><span id="uc_msg1_lblMsg"></span></center></div>
+            </div>
 
+            <img id="Image3" src="./assets/img/wave.jpg" style="width:100%;"> </img>
+            <img id="Image2" src="./assets/img/cmubanner2.png" style="width:100%;"> </img>
+        </form>	
 
-</form>
-
-
-
-</body>
-@stop
+    </body></html>

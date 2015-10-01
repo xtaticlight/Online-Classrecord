@@ -13,3 +13,8 @@
 
 
 Route::get('/login','PagesController@showLogin');
+Route::post('/signin','PagesController@postSignin');
+Route::get('/admindash','PagesController@showAdmindash');
+Route::get('/instructordash','PagesController@showInstructordash');
+Route::get('/access','PagesController@showAccess');
+Route::get('/test','PagesController@showTest');

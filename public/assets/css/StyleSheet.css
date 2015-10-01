@@ -7,14 +7,13 @@ body,td,th {
 
 .master_style
 { 
-      background-image: url('./assets/img/line1.png');
+      background-image: url('./img/line1.png');
       background-repeat: repeat-x;
-
 }
 
-#tblBg
+.styleling
 {
-    background-image: url(./assets/img/embos2.jpg);
+    background-image: url(./img/embos2.jpg);
     background-repeat: repeat-y;
     padding-left: 15px;
     padding-right: 15px;
