@@ -1,8 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0047)http://utilities.must.edu.ph/MUST_SIS/home.aspx -->
 <link href="./assets/css/bootstrap.css" rel="stylesheet"/>
 <link href="./assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link href="./assets/css/style.css" rel="stylesheet"> </link>
+
 <link href="./assets/css/style-responsive.css" rel="stylesheet"/>
 <link href="./assets/css/animate.min.css" rel="stylesheet" type="text/css"/>
 

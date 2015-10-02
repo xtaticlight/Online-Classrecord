@@ -27,7 +27,7 @@
                         <label>Username:</label>
                         <input type="text" tabindex="1" style="height: 22px; width: 120px" class="form-control" name="username" autofocus/>
 
-                        <br></br><a id="lbMain" href="http://www.must.edu.ph/">MUST&nbsp;Website</a>&nbsp;&gt;&nbsp;<span>HOME</span>
+                        <br></br><a id="lbMain" href="http://www.must.edu.ph/">MUST&nbsp;Website</a>&nbsp;&gt;&nbsp;<span  style="color:#004000;">HOME</span>
                     </div>
                     <div class="form-group col-lg-2 col-md-2 col-xs-2">
                         <br/>
@@ -41,7 +41,7 @@
                     <div class="form-group col-lg-2 col-md-2 col-xs-2" style="margin-left: 165px">
                         <span id="lblVersion" style="color:#004000;">Build 2012.06.13</span>
                         <span id="Label2" class="color1" style="font-family:Bodoni MT;font-size:38pt;">ESOnline</span><br>
-                            <span id="Label3">Online&nbsp;Class&nbsp;Record&nbsp;Encoding</span>
+                            <span id="Label3" style="color:#004000;">Online&nbsp;Class&nbsp;Record&nbsp;Encoding</span>
                     </div>
 
                     <div class="row mb">

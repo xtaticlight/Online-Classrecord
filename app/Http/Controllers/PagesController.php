@@ -11,31 +11,7 @@ class PagesController extends Controller
 {
     function showLogin() {
 
-      return view('pages.login');
-    }
-    function postSignin() {
-        $username = \Input::get('username');
-        $password = \Input::get('password');
-         if(is_null($username)||(empty($username))){
-            return \Redirect::back()
-                            ->with('message', 'Null talisman.<br> ')
-                            ->withInput(); 
-        }
-         if(is_null($password)||(empty($password)))
-        {
-            return \Redirect::back()
-                            ->with('message', 'Password is empty.<br> ')
-                            ->withInput();
-        }
-        
-         if ($username == "admin" && $password == "admin123") {
-
-            return \Redirect::to('/instructordash')->with('message', 'You are now logged in.');
-        } else {
-            return \Redirect::back()
-                            ->with('message', 'Your Username / Password combination was incorrect.<br> ')
-                            ->withInput();
-        }
+        return view('pages.login');
     }
     function showAdmindash() {
 
@@ -45,12 +21,8 @@ class PagesController extends Controller
 
       return view('pages.test');
     }
-    function showInstructordash() {
+    function showHome() {
 
-      return view('pages.instructordash');
-    }
-    function showAccess() {
-
-      return view('pages.access');
+      return view('pages.home');
     }
 }

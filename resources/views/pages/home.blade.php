@@ -3,7 +3,8 @@
 @section('profile')
 <title>Home - Login</title>
 @section('action')
-<form method="post" action="/e-class-record/public/signin" id="form1" class="page_style">
+
+<form method="post" action="/e-class-record/public/access" id="form1" class="page_style">
     @section('profile')
     <br/>
     <div class="styleling">
@@ -15,8 +16,8 @@
         </div>
         
         <div class="form-group col-lg-1 col-md-1 col-xs-1" style="margin-top: 20px">
-            <span id="LoginView1_LoginName1" style="color:Blue;font-family:Verdana;font-size:12pt;font-weight:bold;font-style:normal;">2011100310</span>
-            <span id="LoginView1_lblRole" class="color1">[sis_student]</span>
+            <span id="LoginView1_LoginName1" style="color:Blue;font-family:Verdana;font-size:12pt;font-weight:bold;font-style:normal;">{{ $data['employee_id'] }}</span>
+            <span id="LoginView1_lblRole" class="color1">[employee]</span>
             
             <div class="form-group col-lg-1 col-md-1 col-xs-1">
                 <a id="LoginView1_lbChangePW" href="javascript:__doPostBack('ctl00$LoginView1$lbChangePW','')">Change&nbsp;Password</a>&nbsp;|&nbsp;<a id="LoginView1_LoginStatus2" href="javascript:__doPostBack('ctl00$LoginView1$LoginStatus2$ctl00','')">&nbsp;Logout</a>
@@ -64,7 +65,7 @@
                         <table width="100%">
                             <tbody><tr>
                                     <td valign="middle" style="text-align: center; vertical-align:middle; padding:3px">
-                                        <img id="ContentPlaceHolder1_Uc_student_info1_imgbStudent" src="" style="height:75px;width:75px;"></td>
+                                        <img id="ContentPlaceHolder1_Uc_student_info1_imgbStudent" src="./assets/img/{{ $data['username'] }}.jpg" style="height:70px;width:75px;margin-top: -4px"></td>
                                     <td valign="top" style="width: 100%">
                                         <table cellpadding="0" cellspacing="0" width="100%">
                                             <tbody><tr>
@@ -75,20 +76,16 @@
                                                                         <span id="ContentPlaceHolder1_Uc_student_info1_Label1">Employee No.</span></td>
                                                                     <td class="TableHeader">
                                                                         <span id="ContentPlaceHolder1_Uc_student_info1_Label2">Name</span></td>
-                                                                    <td style="width: 120px;" class="TableHeader">
-                                                                        <span id="ContentPlaceHolder1_Uc_student_info1_Label3">Course/Yr</span></td>
                                                                     <td style="width: 75px;" class="TableHeader">
                                                                         <span id="ContentPlaceHolder1_Uc_student_info1_Label4">Gender</span></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td style="width: 100px; text-align: center;">
-                                                                        <span id="ContentPlaceHolder1_Uc_student_info1_lblStudentNo" style="font-size:Larger;font-weight:normal;">400382</span></td>
+                                                                    <td style="width: 100px; height: 30px; text-align: center;">
+                                                                        <span id="ContentPlaceHolder1_Uc_student_info1_lblStudentNo" style="font-size:Larger;font-weight:normal;">{{ $data['employee_id'] }}</span></td>
                                                                     <td style="text-align: center">
-                                                                        <span id="ContentPlaceHolder1_Uc_student_info1_lblName" style="font-size:Larger;font-weight:normal;">Bernard Talungko</span></td>
-                                                                    <td style="width: 120px; text-align: center;">
-                                                                        <span id="ContentPlaceHolder1_Uc_student_info1_lblCourseYr" style="font-size:Larger;font-weight:normal;"></span></td>
+                                                                        <span id="ContentPlaceHolder1_Uc_student_info1_lblName" style="font-size:Larger;font-weight:normal;">{{ $data['name'] }}</span></td>
                                                                     <td style="width: 75px; text-align: center;">
-                                                                        <span id="ContentPlaceHolder1_Uc_student_info1_lblGender" style="font-size:Larger;font-weight:normal;"></span></td>
+                                                                        <span id="ContentPlaceHolder1_Uc_student_info1_lblGender" style="font-size:Larger;font-weight:normal;">{{ $data['gender'] }}</span></td>
                                                                 </tr>
                                                             </tbody></table>
                                                     </td>
@@ -102,11 +99,11 @@
                                                         <table style="font-size: smaller; width: 100%; font-style: italic">
                                                             <tbody><tr>
                                                                     <td>
-                                                                        <span id="ContentPlaceHolder1_Uc_student_info1_Label5">Email</span>
-                                                                        <span id="ContentPlaceHolder1_Uc_student_info1_lblEmail"></span></td>
+                                                                        <span id="ContentPlaceHolder1_Uc_student_info1_Label5">Email:</span>
+                                                                        <span id="ContentPlaceHolder1_Uc_student_info1_lblEmail">{{ $data['email'] }}</span></td>
                                                                     <td>
                                                                         <span id="ContentPlaceHolder1_Uc_student_info1_Label6">Mobile No.</span>
-                                                                        <span id="ContentPlaceHolder1_Uc_student_info1_lblMobileNo"></span></td>
+                                                                        <span id="ContentPlaceHolder1_Uc_student_info1_lblMobileNo">{{ $data['contact'] }}</span></td>
                                                                 </tr>
                                                             </tbody></table>
                                                     </td>
@@ -134,12 +131,13 @@
     <br>
     <br>
     <br>
+    <input type="hidden" name="username" value="{{ $data['username'] }}">
     <table id="ContentPlaceHolder1_tblMenu" style="margin: -10px; margin-left: 10px">
         <tbody><tr>
                 <td style="text-align: center; width: 150px">
-                    <a href="./access">
+                    <button type="submit">
                         <img id="ContentPlaceHolder1_Image4" src="./assets/img/classrecord.png" style="margin-bottom: 7px">
-                    </a>
+                    </button>
                 </td>
             </tr>
             <tr>
@@ -158,5 +156,16 @@
 </td></tr>
 </tbody></table>
 
-
 @stop
+@section('footer')
+<script type="text/javascript" src="./assets/js/jquery-1.11.2.min"></script>
+@stop
+<script>
+$(document).ready(function(){
+   $(document).on("click",".login-button",function(){
+     var form = $(this).closest("form");
+     //console.log(form);
+     form.submit();
+   });
+});
+</script>

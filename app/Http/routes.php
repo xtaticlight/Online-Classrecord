@@ -16,8 +16,8 @@ Route::get('/error','PagesController@showError');
 Route::get('/error12','PagesController@showError');
 
 Route::get('/login','PagesController@showLogin');
-Route::post('/signin','PagesController@postSignin');
+Route::post('/signin','SigningController@postSignin');
 Route::get('/admindash','PagesController@showAdmindash');
-Route::get('/instructordash','PagesController@showInstructordash');
-Route::get('/access','PagesController@showAccess');
+Route::get('/home','PagesController@showHome');
+Route::post('/access','SigningController@showAccess');
 Route::get('/test','PagesController@showTest');
