@@ -1,9 +1,9 @@
-
 @extends('main')
 @section('profile')
 <title>Home - Login</title>
 @section('action')
-<form method="post" action="/e-class-record/public/access" id="form1" class="page_style">
+
+<form method="post" action="/e-class-record/public/records" id="form1" class="page_style">
     @section('profile')
     <br/>
     <div class="styleling">
@@ -19,7 +19,7 @@
             <span id="LoginView1_lblRole" class="color1">[employee]</span>
             
             <div class="form-group col-lg-1 col-md-1 col-xs-1">
-                <a id="LoginView1_lbChangePW" href="javascript:__doPostBack('ctl00$LoginView1$lbChangePW','')">Change&nbsp;Password</a>&nbsp;|&nbsp;<a id="LoginView1_LoginStatus2" href="javascript:__doPostBack('ctl00$LoginView1$LoginStatus2$ctl00','')">&nbsp;Logout</a>
+                <a id="LoginView1_lbChangePW" href="javascript:__doPostBack('ctl00$LoginView1$lbChangePW','')">Change&nbsp;Password</a>&nbsp;|&nbsp;<a id="LoginView1_LoginStatus2" href="http://localhost/e-class-record/public/login">&nbsp;Logout</a>
                 
             </div>
             <div class="form-group col-lg-1 col-md-1 col-xs-1" id="messaging">
@@ -151,6 +151,7 @@
 
 		</select></td>
 		<td>
+                    <input type="hidden" name="username" value="{{ $data['username'] }}">
             <select name="ctl00$ContentPlaceHolder1$Uc_grades1$Uc_regayterm1$ddlSemester" id="ContentPlaceHolder1_Uc_grades1_Uc_regayterm1_ddlSemester">
 			<option value="1st Semester">1st Semester</option>
 			<option value="2nd Semester">2nd Semester</option>
@@ -158,7 +159,7 @@
 
 		</select></td>
 		<td>
-            <input type="submit" name="ctl00$ContentPlaceHolder1$Uc_grades1$Uc_regayterm1$btnOk" value="Ok" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ContentPlaceHolder1$Uc_grades1$Uc_regayterm1$btnOk&quot;, &quot;&quot;, true, &quot;&quot;, &quot;&quot;, false, false))" id="ContentPlaceHolder1_Uc_grades1_Uc_regayterm1_btnOk" class="clButton" style="height:20px;width:100px;"></td>
+            <input type="submit" value="Ok" class="clButton" style="height:20px;width:100px;"></td>
 	</tr>
 </tbody></table>
 

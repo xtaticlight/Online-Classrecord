@@ -60,7 +60,57 @@ class SigningController extends Controller {
       $username = \Input::get('username');
       $userData = $this->getData($username);
       return view('pages.access')->with('data', $userData);
-      
     }
-
+    function showRecords() {
+       
+      $username = \Input::get('username');
+      $userData = $this->getData($username);
+      $quiz11 = null;
+      $tquiz11 = null;
+      $quiz12 = null;
+      $tquiz12 = null;
+      $prelimexam = null;
+      $tprelimexam = null;
+      $midtermexam = null;
+      $tmidtermexam = null;
+      $midtermgrade = null;
+      $records = array(
+            'quiz11' => $quiz11,
+            'tquiz11' => $tquiz11,
+            'quiz12' => $quiz12,
+            'tquiz12' => $tquiz12,
+            'prelimexam' => $prelimexam,
+            'tprelimexam' => $tprelimexam,
+            'midtermexam' => $midtermexam,
+            'tmidtermexam' => $tmidtermexam,
+            'midtermgrade' => $midtermgrade,
+        );
+      return view('pages.test')->with('records', $records)->with('data', $userData);
+    }
+    function getSolve() {
+        $username = \Input::get('username');
+      $userData = $this->getData($username);
+      
+      $quiz11 = \Input::get('Quiz11');
+      $tquiz11 = \Input::get('TQuiz11');
+      $quiz12 = \Input::get('Quiz12');
+      $tquiz12 = \Input::get('TQuiz12');
+      $prelimexam = \Input::get('PrelimExam');
+      $tprelimexam = \Input::get('TPrelimExam');
+      $midtermexam = \Input::get('MidtermExam');
+      $tmidtermexam = \Input::get('TMidtermExam');
+      $midtermgrade = (((5 - (4 * ($quiz11)) / $tquiz11) + (5 - (4 * ($quiz12)) / $tquiz12) + (5 - (4 * ($prelimexam)) / $tprelimexam)) * 0.4) + ((5 - (4 * ($midtermexam)) / $tmidtermexam) * 0.6);
+      $records = array(
+            'quiz11' => $quiz11,
+            'tquiz11' => $tquiz11,
+            'quiz12' => $quiz12,
+            'tquiz12' => $tquiz12,
+            'prelimexam' => $prelimexam,
+            'tprelimexam' => $tprelimexam,
+            'midtermexam' => $midtermexam,
+            'tmidtermexam' => $tmidtermexam,
+            'midtermgrade' => $midtermgrade,
+        );
+      return view('pages.test')->with('records', $records)->with('data', $userData);
+    }
 }

@@ -142,14 +142,12 @@
         <span id="ContentPlaceHolder1_Uc_grades1_lblAYTerm" style="font-size:Larger;">2015-2016 - 1st Semester</span><br>
         <br>
         <div>
-            
 	<table cellspacing="0" rules="all" border="1" id="ContentPlaceHolder1_Uc_grades1_gvGrades" style="border-collapse:collapse;">
 		<tbody><tr class="GridHeader" style="height:30px;">
 			<th scope="col"></th><th scope="col">Student Name</th><th scope="col">Quiz1</th><th scope="col">Quiz2</th><th scope="col">Prelim Exam</th><th scope="col">Midterm Exam</th><th scope="col">Midterm Grade</th>
 		</tr><tr>
 		<td style="width:40px;" align="center"><input type="button"  value="Profile" onclick="parent.location.href='student.html';" class="clButton" style="height:17px;width:60px;">
-                        <input type="hidden" name="username" value="{{ $data['username'] }}">
-</td><td style="width:50px;" align="center">Baguio, R A</td><td style="width:30px;"><input name="Quiz11" value="{{ $records['quiz11'] }}" style="height:15px;width:40px;"><input name="TQuiz11" value="{{ $records['tquiz11'] }}" style="height:15px;width:40px;"></td><td style="width:30px;"><input name="Quiz12" value="{{ $records['quiz12'] }}" style="height:15px;width:40px;"><input name="TQuiz12" value="{{ $records['tquiz12'] }}" style="height:15px;width:40px;"></td><td style="width:30px;"><input name="PrelimExam" value="{{ $records['prelimexam'] }}" style="height:15px;width:40px;"><input name="TPrelimExam" value="{{ $records['tprelimexam'] }}" style="height:15px;width:40px;"></td><td style="width:30px;"><input name="MidtermExam" value="{{ $records['midtermexam'] }}" style="height:15px;width:40px;"><input name="TMidtermExam" value="{{ $records['tmidtermexam'] }}" style="height:15px;width:40px;"></td><td style="width:30px;">{{ $records['midtermgrade'] }}</td>
+</td><td style="width:50px;" align="center">Baguio, R A</td><td style="width:30px;"><input name="Quiz11" style="height:15px;width:40px;"></td><td style="width:30px;"><input name="Quiz12" style="height:15px;width:40px;"></td><td style="width:30px;"><input name="PrelimExam" style="height:15px;width:40px;"></td><td style="width:30px;"><input name="MidtermExam" style="height:15px;width:40px;"></td><td style="width:30px;"></td>
 		</tr><tr style="background-color:WhiteSmoke;">
 			<td style="width:40px;" align="center"><input type="button"  value="Profile" onclick="parent.location.href='student.html';" class="clButton" style="height:17px;width:60px;"><td style="width:50px;" align="center">Katipunan, A</td><td style="width:30px;"><input style="height:15px;width:40px;"></td></td><td style="width:30px;">
 			<input style="height:15px;width:40px;"></td><td style="width:30px;"><input style="height:15px;width:40px;"></td>

@@ -20,7 +20,7 @@
             <span id="LoginView1_lblRole" class="color1">[employee]</span>
             
             <div class="form-group col-lg-1 col-md-1 col-xs-1">
-                <a id="LoginView1_lbChangePW" href="javascript:__doPostBack('ctl00$LoginView1$lbChangePW','')">Change&nbsp;Password</a>&nbsp;|&nbsp;<a id="LoginView1_LoginStatus2" href="javascript:__doPostBack('ctl00$LoginView1$LoginStatus2$ctl00','')">&nbsp;Logout</a>
+                <a id="LoginView1_lbChangePW" href="javascript:__doPostBack('ctl00$LoginView1$lbChangePW','')">Change&nbsp;Password</a>&nbsp;|&nbsp;<a id="LoginView1_LoginStatus2" href="http://localhost/e-class-record/public/login">&nbsp;Logout</a>
                 
             </div>
             <div class="form-group col-lg-1 col-md-1 col-xs-1" id="messaging">
