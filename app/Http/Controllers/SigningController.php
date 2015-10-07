@@ -9,6 +9,12 @@ use App\Http\Controllers\Controller;
 use App\User;
 
 class SigningController extends Controller {
+    protected $loginPath = '/login';
+    
+    public function __construct()
+	{
+		$this->middleware('guest');
+	}
     
     function getData($username) {
         $userData = User::where('username', '=', $username)->first();
@@ -85,7 +91,7 @@ class SigningController extends Controller {
             'tmidtermexam' => $tmidtermexam,
             'midtermgrade' => $midtermgrade,
         );
-      return view('pages.test')->with('records', $records)->with('data', $userData);
+      return view('pages.records')->with('records', $records)->with('data', $userData);
     }
     function getSolve() {
         $username = \Input::get('username');
@@ -111,6 +117,6 @@ class SigningController extends Controller {
             'tmidtermexam' => $tmidtermexam,
             'midtermgrade' => $midtermgrade,
         );
-      return view('pages.test')->with('records', $records)->with('data', $userData);
+      return view('pages.records')->with('records', $records)->with('data', $userData);
     }
 }

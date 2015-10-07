@@ -9,6 +9,11 @@ use App\Http\Controllers\Controller;
 
 class PagesController extends Controller
 {
+    public function __construct()
+	{
+		$this->middleware('guest');
+	}
+        
     function showLogin() {
 
         return view('pages.login');
@@ -24,5 +29,9 @@ class PagesController extends Controller
     function showHome() {
 
       return view('pages.home');
+    }
+    function showRecords() {
+
+      return view('pages.records');
     }
 }
