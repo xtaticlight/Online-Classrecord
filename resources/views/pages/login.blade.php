@@ -10,7 +10,7 @@
     <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link href="./assets/css/StyleSheet.css" type="text/css" rel="stylesheet"> </link>
 
-        <title>Home - Login</title>
+        <title>Home</title>
     </head>
 
     <body class="master_style">
@@ -22,30 +22,26 @@
             <div class="styleling" style="height: 450px"
                  <div class="container animated fadeIn">
 
-                    <div class="form-group col-lg-2 col-md-2 col-xs-2">
+                    <div class="form-group col-lg-3 col-md-3 col-xs-3">
                         <br/>
                         <label>Username:</label>
                         <input type="text" tabindex="1" style="height: 22px; width: 120px" class="form-control" name="username" autofocus/>
 
-                        <br></br><a id="lbMain" href="http://www.must.edu.ph/">MUST&nbsp;Website</a>&nbsp;&gt;&nbsp;<span  style="color:#004000;">HOME</span>
+                        <br></br><a id="lbMain" class="text-nowrap" href="http://www.must.edu.ph/">MUST Website</a> &gt; <span  style="color:#004000;">HOME</span>
                     </div>
-                    <div class="form-group col-lg-2 col-md-2 col-xs-2">
+                    <div class="form-group col-lg-3 col-md-3 col-xs-3 col-lg-pull-1 col-md-pull-1 col-xs-pull-1">
                         <br/>
                         <label>Password:</label>
                         <input type="password" tabindex="2" style="height: 22px; width: 120px" class="form-control" name="password">
                     </div>
-                    <div class="form-group col-lg-2 col-md-2 col-xs-2" style="margin-top: 20px">
+                    <div class="form-group col-lg-3 col-md-3 col-xs-3 col-lg-pull-2 col-md-pull-2 col-xs-pull-2" style="margin-top: 20px">
                         <br/>
                         <input class="btn-theme btn-block" tabindex="3" style="height: 22px; width: 50px" type="submit" value="Login"/>
                     </div>
-                    <div class="form-group col-lg-2 col-md-2 col-xs-2" style="margin-left: 165px">
+                    <div class="form-group col-lg-3 col-md-3 col-xs-3 col-lg-pull-1 col-md-pull-1 col-xs-pull-1">
                         <span id="lblVersion" style="color:#004000;">Build 2012.06.13</span>
                         <span id="Label2" class="color1" style="font-family:Bodoni MT;font-size:38pt;">ESOnline</span><br>
-                            <span id="Label3" style="color:#004000;">Online&nbsp;Class&nbsp;Record&nbsp;Encoding</span>
-                    </div>
-
-                    <div class="row mb">
-
+                            <span id="Label3" style="color:#004000;" class="text-nowrap">Online Class Record Encoding</span>
                     </div>
 
                 </div>
