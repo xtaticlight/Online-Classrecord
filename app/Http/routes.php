@@ -23,6 +23,7 @@ Route::post('/access','SigningController@showAccess');
 Route::get('/test','PagesController@showTest');
 Route::post('/records','SigningController@showRecords');
 Route::post('/solve','SigningController@getSolve');
+Route::post('/subjects','SigningController@showSubjects');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

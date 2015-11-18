@@ -67,6 +67,11 @@ class SigningController extends Controller {
       $userData = $this->getData($username);
       return view('pages.access')->with('data', $userData);
     }
+    function showSubjects() {
+      $username = \Input::get('username');
+      $userData = $this->getData($username);
+      return view('pages.subjects')->with('data', $userData);
+    }
     function showRecords() {
        
       $username = \Input::get('username');
@@ -105,7 +110,7 @@ class SigningController extends Controller {
       $tprelimexam = \Input::get('TPrelimExam');
       $midtermexam = \Input::get('MidtermExam');
       $tmidtermexam = \Input::get('TMidtermExam');
-      $midtermgrade = (((5 - (4 * ($quiz11)) / $tquiz11) + (5 - (4 * ($quiz12)) / $tquiz12) + (5 - (4 * ($prelimexam)) / $tprelimexam)) * 0.4) + ((5 - (4 * ($midtermexam)) / $tmidtermexam) * 0.6);
+      $midtermgrade = (((5 - (4 * ($quiz11)) / $tquiz11) + (5 - (4 * ($quiz12)) / $tquiz12) + (5 - (4 * ($prelimexam)) / $tprelimexam)) / 3 * 0.4) + ((5 - (4 * ($midtermexam)) / $tmidtermexam) * 0.6);
       $records = array(
             'quiz11' => $quiz11,
             'tquiz11' => $tquiz11,
@@ -115,7 +120,7 @@ class SigningController extends Controller {
             'tprelimexam' => $tprelimexam,
             'midtermexam' => $midtermexam,
             'tmidtermexam' => $tmidtermexam,
-            'midtermgrade' => $midtermgrade,
+            'midtermgrade' => round($midtermgrade,2),
         );
       return view('pages.records')->with('records', $records)->with('data', $userData);
     }

@@ -3,7 +3,7 @@
 <title>Records</title>
 @section('action')
 
-<form method="post" action="/e-class-record/public/records" id="form1" class="page_style">
+<form method="post" action="/e-class-record/public/subjects" id="form1" class="page_style">
     @section('profile')
     <br/>
     <div class="styleling">

@@ -93,8 +93,8 @@ var $BTN = $('#export-btn');
 var $EXPORT = $('#export');
 
 iter = 3;
-$('.table-add').click(function () {
-         $TABLE.find('tr').each(function(){
+for ($x = 0; $x <= 3; $x++) {
+    $TABLE.find('tr').each(function(){
            var trow = $(this);
              if(trow.index() === 0){
                  trow.append('<th>Quiz'+iter+'</th>');
@@ -104,7 +104,9 @@ $('.table-add').click(function () {
             
          });
          iter += 1;
-     });
+} 
+         
+
 $('.table-remove').click(function () {
     $(this).parents('tr').detach();
 });

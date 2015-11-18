@@ -8,7 +8,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link href="./assets/css/StyleSheet.css" type="text/css" rel="stylesheet"> </link>
-        <title>Records</title>
+        <title>Subjects</title>
         
     </head>
 
@@ -16,8 +16,8 @@
 
 
 
-<form method="post" action="/e-class-record/public/solve" id="form1" class="page_style">
-
+<form method="post" action="/e-class-record/public/records" id="form1" class="page_style">
+<input type="hidden" name="username" value="{{ $data['username'] }}">
     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             <img id="Image1" src="./assets/img/banner.png" style="width:100%;"> </img>
             
@@ -137,36 +137,22 @@
 
 <br>
     <br>
-            <span id="ContentPlaceHolder1_lblType" class="clTitle">Records</span><br>
+            <span id="ContentPlaceHolder1_lblType" class="clTitle">Subjects</span><br>
     <br>
 
 
         <span id="ContentPlaceHolder1_Uc_grades1_lblAYTerm" style="font-size:Larger;">2015-2016 - 1st Semester</span><br>
         <br>
         <div>
-            
-	<table cellspacing="0" rules="all" border="1" id="ContentPlaceHolder1_Uc_grades1_gvGrades" style="border-collapse:collapse;">
+            <table cellspacing="0" rules="all" border="1" id="ContentPlaceHolder1_Uc_grades1_gvGrades" style="border-collapse:collapse;">
 		<tbody><tr class="GridHeader" style="height:30px;">
-			<th scope="col">Student No.</th><th scope="col">Student Name</th><th scope="col">Quiz1</th><th scope="col">Quiz2</th><th scope="col">Prelim Exam</th><th scope="col">Midterm Exam</th><th scope="col">Midterm Grade</th>
+			<th scope="col"></th><th scope="col">Subject Code</th><th scope="col">Subject Title</th><th scope="col">Section</th>
 		</tr><tr>
-		<td style="width:40px;" align="center">
-                        <input type="hidden" name="username" value="{{ $data['username'] }}">2010100829
-                </td><td style="width:50px;" align="center">Baguio, Ray Angelo</td><td style="width:30px;"><input name="Quiz11" value="{{ $records['quiz11'] }}" style="height:15px;width:40px;"></td><td style="width:30px;"><input name="Quiz12" value="{{ $records['quiz12'] }}" style="height:15px;width:40px;"></td><td style="width:30px;"><input name="PrelimExam" value="{{ $records['prelimexam'] }}" style="height:15px;width:40px;"></td><td style="width:30px;"><input name="MidtermExam" value="{{ $records['midtermexam'] }}" style="height:15px;width:40px;"></td><td style="width:30px;">{{ $records['midtermgrade'] }}</td>
-		</tr><tr style="background-color:WhiteSmoke;">
-			<td style="width:40px;" align="center">2011100310<td style="width:50px;" align="center">Katipunan, Aldrin</td><td style="width:30px;"><input name="R2Q1" style="height:15px;width:40px;"></td></td><td style="width:30px;">
-			<input name="R2Q2" style="height:15px;width:40px;"></td><td style="width:30px;"><input name="R2PRELIM" style="height:15px;width:40px;"></td>
-			<td style="width:30px;"><input name="R2MIDTERM" style="height:15px;width:40px;"></td><td style="width:30px;"></td>
-		</tr><tr>
-			<td style="width:40px;" align="center">2011102230<td style="width:50px;" align="center">Ting, Kim</td><td style="width:30px;">
-			<input style="height:15px;width:40px;"></td><td style="width:30px;"><input style="height:15px;width:40px;"></td><td style="width:30px;"><input style="height:15px;width:40px;"></td><td style="width:30px;"><input style="height:15px;width:40px;"></td><td style="width:30px;"></td>
-		</tr><tr style="background-color:WhiteSmoke;">
-			<td style="width:40px;" align="center">2011101337<td style="width:50px;" align="center">Mendez, Junan Ray</td><td style="width:30px;">
-			<input style="height:15px;width:40px;"></td><td style="width:30px;"><input style="height:15px;width:40px;"></td><td style="width:30px;"><input style="height:15px;width:40px;"></td><td style="width:30px;"><input style="height:15px;width:40px;"></td><td style="width:30px;"></td>
-		</tr><tr style="background-color:WhiteSmoke;">
-			<td style="width:50px;" align="center">TOTAL SCORE<td style="width:100px;" align="center"></td><td style="width:30px;"><input name="TQuiz11" value="{{ $records['tquiz11'] }}" style="height:15px;width:40px;"><td style="width:30px;"><input name="TQuiz12" value="{{ $records['tquiz12'] }}" style="height:15px;width:40px;"><td style="width:30px;">
-			<input name="TPrelimExam" value="{{ $records['tprelimexam'] }}" style="height:15px;width:40px;"><td style="width:30px;"><input name="TMidtermExam" value="{{ $records['tmidtermexam'] }}" style="height:15px;width:40px;"><td style="width:30px;" align="center"><input type="submit" value="Solve!" style="height:18px;width:50px;">
-					</tr>
+			<td style="width:45px;" align="center"><input type="submit"  value="=>" class="clButton" style="height:17px;width:28px;">
+</td><td style="width:120px;" align="center">COE10</td><td style="width:200px;">C Programming</td><td style="width:100px;" align="center">cpe2a_c1</td>
+		</tr>
 	</tbody></table>
+	
 </div>
             <br/>
 
