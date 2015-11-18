@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<link rel="shortcut icon" href="http://www.must.edu.ph/wp-content/themes/must-theme/library/media/images/favicon.ico" />
 <link href="./assets/css/bootstrap.css" rel="stylesheet"/>
 <link href="./assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
