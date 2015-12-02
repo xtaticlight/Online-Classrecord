@@ -32,6 +32,13 @@ class SigningController extends Controller {
       //  dd($resultArray);
         return $resultArray;
     }
+    function getSubject($schoolYear,$semester,$id) {
+        $query = DB::table('courses')->where('users_id', '=', $id,'schoolYear','=',$schoolYear)->get();
+       $resultArray = json_decode(json_encode($query), true);
+      dd($resultArray);
+        return $resultArray;
+    }
+   
 
     function postSignin() {
         $username = \Input::get('username');
@@ -72,6 +79,9 @@ class SigningController extends Controller {
     function showSubjects() {
         $username = \Input::get('username');
         $id = \Input::get('id');
+        $schoolYear = \Input::get('schoolYear');
+        $semester = \Input::get('semester');
+        $getSubject = $this->getSubject($schoolYear,$semester,$id);
         $userData = $this->getData($username);
         $subjectData = $this->getCourse($id);
         return view('pages.subjects')->with('userData', $userData)->with('subjectData', $subjectData);
