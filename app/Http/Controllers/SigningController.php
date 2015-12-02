@@ -33,9 +33,9 @@ class SigningController extends Controller {
         return $resultArray;
     }
     function getSubject($schoolYear,$semester,$id) {
-        $query = DB::table('courses')->where('users_id', '=', $id,'schoolYear','=',$schoolYear)->get();
-       $resultArray = json_decode(json_encode($query), true);
-      dd($resultArray);
+        $query = DB::table('courses')->where('users_id', '=', $id) AND where('schoolYear','=',$schoolYear);
+       // $resultArray = json_decode(json_encode($query), true);
+      dd($query);
         return $resultArray;
     }
    
