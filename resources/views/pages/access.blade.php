@@ -17,7 +17,7 @@
         <div class="form-group col-lg-4 col-md-4 col-xs-4 col-lg-pull-3 col-md-pull-3 col-xs-pull-3">
             <div class="container">
                 <div class="form-group col-lg-12 col-md-12 col-xs-12" style="margin-left: -25px">
-                    <span id="LoginView1_LoginName1" style="color:Blue;font-family:Verdana;font-size:12pt;font-weight:bold;font-style:normal;">{{ $userData['instructor_id'] }}</span>
+                    <span id="LoginView1_LoginName1" style="color:Blue;font-family:Verdana;font-size:12pt;font-weight:bold;font-style:normal;">{{ $userData['id'] }}</span>
                 </div>
                 <div class="form-group col-lg-12 col-md-12 col-xs-12" style="margin-top: -15px;margin-bottom: -15px;margin-left: -25px">
                     <span id="LoginView1_lblRole" class="color1">[employee]</span>
@@ -66,7 +66,7 @@
                     <table width="100%">
                         <tbody><tr>
                                 <td valign="middle" style="text-align: center; vertical-align:middle; padding:3px">
-                                    <img id="ContentPlaceHolder1_Uc_student_info1_imgbStudent" src="./assets/img/{{ $userData['instructor_username'] }}.jpg" style="height:70px;width:75px;margin-top: -4px"></td>
+                                    <img id="ContentPlaceHolder1_Uc_student_info1_imgbStudent" src="./assets/img/{{ $userData['username'] }}.jpg" style="height:70px;width:75px;margin-top: -4px"></td>
                                 <td valign="top" style="width: 100%">
                                     <table cellpadding="0" cellspacing="0" width="100%">
                                         <tbody><tr>
@@ -82,9 +82,9 @@
                                                             </tr>
                                                             <tr>
                                                                 <td style="width: 100px; height: 30px; text-align: center;">
-                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblStudentNo" style="font-size:Larger;font-weight:normal;">{{ $userData['instructor_id'] }}</span></td>
+                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblStudentNo" style="font-size:Larger;font-weight:normal;">{{ $userData['id'] }}</span></td>
                                                                 <td style="text-align: center">
-                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblName" style="font-size:Larger;font-weight:normal;">{{ $userData['instructor_name'] }}</span></td>
+                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblName" style="font-size:Larger;font-weight:normal;">{{ $userData['name'] }}</span></td>
                                                                 <td style="width: 75px; text-align: center;">
                                                                     <span id="ContentPlaceHolder1_Uc_student_info1_lblGender" style="font-size:Larger;font-weight:normal;">{{ $userData['gender'] }}</span></td>
                                                             </tr>
@@ -101,10 +101,10 @@
                                                         <tbody><tr>
                                                                 <td>
                                                                     <span id="ContentPlaceHolder1_Uc_student_info1_Label5">Email</span>
-                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblEmail">{{ $userData['email_add'] }}</span></td>
+                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblEmail">{{ $userData['email'] }}</span></td>
                                                                 <td>
                                                                     <span id="ContentPlaceHolder1_Uc_student_info1_Label6">Mobile No.</span>
-                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblMobileNo">{{ $userData['contact_number'] }}</span></td>
+                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblMobileNo">{{ $userData['contactNumber'] }}</span></td>
                                                             </tr>
                                                         </tbody></table>
                                                 </td>
@@ -145,20 +145,20 @@
             </tr>
             <tr>
                 <td>
-                    <select name="ctl00$ContentPlaceHolder1$Uc_grades1$Uc_regayterm1$ddlSchoolYear" id="ContentPlaceHolder1_Uc_grades1_Uc_regayterm1_ddlSchoolYear">
+                    <select name="schoolYear" id="form1">
                          <option>2015-2016</option>
                          <option>2014-2015</option>
                     </select></td>
                 <td>
                     &nbsp;
-                    <input type="hidden" name="id" value="{{ $userData['instructor_id'] }}">
-                     <input type="hidden" name="username" value="{{ $userData['instructor_username'] }}">
-                    <select name="ctl00$ContentPlaceHolder1$Uc_grades1$Uc_regayterm1$ddlSemester" id="ContentPlaceHolder1_Uc_grades1_Uc_regayterm1_ddlSemester">
-                         @foreach( $subjectData as $data )
-                         <option> {{ $data['semester'] }}</option>
-                        @endforeach
+                    <input type="hidden" name="id" value="{{ $userData['id'] }}">
+                     <input type="hidden" name="username" value="{{ $userData['username'] }}">
+                    <select name="semester" id="form1">
+                         <option>FIRST</option>
+                         <option>SECOND</option>
+                          <option>SUMMER</option>
                     </select></td>
-                <td>
+               <td>
                   &nbsp;  <input type="submit" value="Ok" class="clButton" style="height:20px;width:100px;"></td>
             </tr>
         </tbody></table>
