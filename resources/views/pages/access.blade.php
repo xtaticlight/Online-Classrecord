@@ -17,7 +17,7 @@
         <div class="form-group col-lg-4 col-md-4 col-xs-4 col-lg-pull-3 col-md-pull-3 col-xs-pull-3">
             <div class="container">
                 <div class="form-group col-lg-12 col-md-12 col-xs-12" style="margin-left: -25px">
-                    <span id="LoginView1_LoginName1" style="color:Blue;font-family:Verdana;font-size:12pt;font-weight:bold;font-style:normal;">{{ $data['employee_id'] }}</span>
+                    <span id="LoginView1_LoginName1" style="color:Blue;font-family:Verdana;font-size:12pt;font-weight:bold;font-style:normal;">{{ $userData['instructor_id'] }}</span>
                 </div>
                 <div class="form-group col-lg-12 col-md-12 col-xs-12" style="margin-top: -15px;margin-bottom: -15px;margin-left: -25px">
                     <span id="LoginView1_lblRole" class="color1">[employee]</span>
@@ -66,7 +66,7 @@
                     <table width="100%">
                         <tbody><tr>
                                 <td valign="middle" style="text-align: center; vertical-align:middle; padding:3px">
-                                    <img id="ContentPlaceHolder1_Uc_student_info1_imgbStudent" src="./assets/img/{{ $data['username'] }}.jpg" style="height:70px;width:75px;margin-top: -4px"></td>
+                                    <img id="ContentPlaceHolder1_Uc_student_info1_imgbStudent" src="./assets/img/{{ $userData['instructor_username'] }}.jpg" style="height:70px;width:75px;margin-top: -4px"></td>
                                 <td valign="top" style="width: 100%">
                                     <table cellpadding="0" cellspacing="0" width="100%">
                                         <tbody><tr>
@@ -82,11 +82,11 @@
                                                             </tr>
                                                             <tr>
                                                                 <td style="width: 100px; height: 30px; text-align: center;">
-                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblStudentNo" style="font-size:Larger;font-weight:normal;">{{ $data['employee_id'] }}</span></td>
+                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblStudentNo" style="font-size:Larger;font-weight:normal;">{{ $userData['instructor_id'] }}</span></td>
                                                                 <td style="text-align: center">
-                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblName" style="font-size:Larger;font-weight:normal;">{{ $data['name'] }}</span></td>
+                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblName" style="font-size:Larger;font-weight:normal;">{{ $userData['instructor_name'] }}</span></td>
                                                                 <td style="width: 75px; text-align: center;">
-                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblGender" style="font-size:Larger;font-weight:normal;">{{ $data['gender'] }}</span></td>
+                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblGender" style="font-size:Larger;font-weight:normal;">{{ $userData['gender'] }}</span></td>
                                                             </tr>
                                                         </tbody></table>
                                                 </td>
@@ -101,10 +101,10 @@
                                                         <tbody><tr>
                                                                 <td>
                                                                     <span id="ContentPlaceHolder1_Uc_student_info1_Label5">Email</span>
-                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblEmail">{{ $data['email'] }}</span></td>
+                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblEmail">{{ $userData['email_add'] }}</span></td>
                                                                 <td>
                                                                     <span id="ContentPlaceHolder1_Uc_student_info1_Label6">Mobile No.</span>
-                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblMobileNo">{{ $data['contact'] }}</span></td>
+                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblMobileNo">{{ $userData['contact_number'] }}</span></td>
                                                             </tr>
                                                         </tbody></table>
                                                 </td>
@@ -137,31 +137,29 @@
         <tbody><tr>
                 <td>
                     <span id="ContentPlaceHolder1_Uc_grades1_Uc_regayterm1_Label1">School Year</span></td>
+                
                 <td>
-                    <span id="ContentPlaceHolder1_Uc_grades1_Uc_regayterm1_Label2">Semester</span></td>
+                   &nbsp; <span id="ContentPlaceHolder1_Uc_grades1_Uc_regayterm1_Label2">Semester</span></td>
                 <td>
                 </td>
             </tr>
             <tr>
                 <td>
                     <select name="ctl00$ContentPlaceHolder1$Uc_grades1$Uc_regayterm1$ddlSchoolYear" id="ContentPlaceHolder1_Uc_grades1_Uc_regayterm1_ddlSchoolYear">
-                        <option value="2015-2016">2015-2016</option>
-                        <option value="2014-2015">2014-2015</option>
-                        <option value="2013-2014">2013-2014</option>
-                        <option value="2012-2013">2012-2013</option>
-                        <option value="2011-2012">2011-2012</option>
-
+                         <option>2015-2016</option>
+                         <option>2014-2015</option>
                     </select></td>
                 <td>
-                    <input type="hidden" name="username" value="{{ $data['username'] }}">
+                    &nbsp;
+                    <input type="hidden" name="id" value="{{ $userData['instructor_id'] }}">
+                     <input type="hidden" name="username" value="{{ $userData['instructor_username'] }}">
                     <select name="ctl00$ContentPlaceHolder1$Uc_grades1$Uc_regayterm1$ddlSemester" id="ContentPlaceHolder1_Uc_grades1_Uc_regayterm1_ddlSemester">
-                        <option value="1st Semester">1st Semester</option>
-                        <option value="2nd Semester">2nd Semester</option>
-                        <option value="Summer">Summer</option>
-
+                         @foreach( $subjectData as $data )
+                         <option> {{ $data['semester'] }}</option>
+                        @endforeach
                     </select></td>
                 <td>
-                    <input type="submit" value="Ok" class="clButton" style="height:20px;width:100px;"></td>
+                  &nbsp;  <input type="submit" value="Ok" class="clButton" style="height:20px;width:100px;"></td>
             </tr>
         </tbody></table>
 
