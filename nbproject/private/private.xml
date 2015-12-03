@@ -2,6 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/xampp/htdocs/e-class-record/app/Http/Controllers/Controller.php</file>
+            <file>file:/C:/xampp/htdocs/e-class-record/database/migrations/2015_12_01_032443_create_subjects_table.php</file>
+            <file>file:/C:/xampp/htdocs/e-class-record/app/Http/Controllers/PagesController.php</file>
+            <file>file:/C:/xampp/htdocs/e-class-record/app/Http/routes.php</file>
+            <file>file:/C:/xampp/htdocs/e-class-record/database/migrations/2014_10_12_000000_create_users_table.php</file>
+            <file>file:/C:/xampp/htdocs/e-class-record/resources/views/pages/access.blade.php</file>
+            <file>file:/C:/xampp/htdocs/e-class-record/resources/views/pages/records.blade.php</file>
+            <file>file:/C:/xampp/htdocs/e-class-record/resources/views/pages/subjects.blade.php</file>
+            <file>file:/C:/xampp/htdocs/e-class-record/resources/views/Main.blade.php</file>
+            <file>file:/C:/xampp/htdocs/e-class-record/app/Http/Controllers/SigningController.php</file>
+            <file>file:/C:/xampp/htdocs/e-class-record/database/migrations/2014_10_12_100000_create_password_resets_table.php</file>
+        </group>
     </open-files>
 </project-private>

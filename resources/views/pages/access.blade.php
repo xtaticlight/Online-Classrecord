@@ -154,9 +154,9 @@
                     <input type="hidden" name="id" value="{{ $userData['id'] }}">
                      <input type="hidden" name="username" value="{{ $userData['username'] }}">
                     <select name="semester" id="form1">
-                         <option>FIRST</option>
-                         <option>SECOND</option>
-                          <option>SUMMER</option>
+                         <option>1st Semester</option>
+                         <option>2nd Semester</option>
+                          <option>Summer</option>
                     </select></td>
                <td>
                   &nbsp;  <input type="submit" value="Ok" class="clButton" style="height:20px;width:100px;"></td>

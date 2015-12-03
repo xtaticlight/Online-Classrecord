@@ -29,17 +29,42 @@ class SigningController extends Controller {
     function getCourse($users_id) {
         $query = DB::table('courses')->where('users_id', '=', $users_id)->get();
         $resultArray = json_decode(json_encode($query), true);
-      //  dd($resultArray);
+        //  dd($resultArray);
         return $resultArray;
     }
-    function getSubject($schoolYear,$semester,$id) {
-        $query = DB::table('courses')->where('users_id', '=', $id) AND where('schoolYear','=',$schoolYear);
-       // $resultArray = json_decode(json_encode($query), true);
-      dd($query);
-        return $resultArray;
-    }
-   
 
+    function getSubject($schoolYear, $semester, $id) {
+        $query = DB::table('courses')->where('users_id', $id)
+                ->where('schoolYear', $schoolYear)
+                ->where('semester', $semester)
+                ->get();
+        $resultArray = json_decode(json_encode($query), true);
+     // dd($resultArray);
+        foreach ($resultArray as $course) {
+            $query = DB::table('subjects')
+                    ->where('users_id', $course['users_id'])
+                    ->where('courses_id', $course['id'])
+                    ->get();
+            $subjectData1[] = json_decode(json_encode($query), true);
+        }
+        $subjectData2 = array_column($subjectData1, 0); 
+    // dd($subjectData2);
+
+           foreach ($subjectData2 as $course) {
+            $query = DB::table('subjects')
+                    ->join('classes', 'subjects.id', '=', 'classes.subjects_id')
+                    ->join('courses', 'subjects.courses_id', '=', 'courses.id')
+                    ->select('subjects.*','classes.*','courses.schoolYear','courses.semester')
+                    ->where('classes.users_id', $course['users_id'])
+                    ->where('classes.subjects_id', $course['id'])
+                    ->get();
+            $subjectDatalist[] = json_decode(json_encode($query), true);
+            $subjectData = $subjectDatalist;
+            }
+           $subjectData = array_column($subjectData, 0); 
+       //  dd($subjectData);
+            return $subjectData;
+    }
     function postSignin() {
         $username = \Input::get('username');
         $password = \Input::get('password');
@@ -81,10 +106,10 @@ class SigningController extends Controller {
         $id = \Input::get('id');
         $schoolYear = \Input::get('schoolYear');
         $semester = \Input::get('semester');
-        $getSubject = $this->getSubject($schoolYear,$semester,$id);
+        $getSubject = $this->getSubject($schoolYear, $semester, $id);
+      //  dd($getSubject);
         $userData = $this->getData($username);
-        $subjectData = $this->getCourse($id);
-        return view('pages.subjects')->with('userData', $userData)->with('subjectData', $subjectData);
+        return view('pages.subjects')->with('userData', $userData)->with('subjectData', $getSubject);
     }
 
     function showRecords() {
