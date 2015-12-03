@@ -17,7 +17,7 @@
         <div class="form-group col-lg-4 col-md-4 col-xs-4 col-lg-pull-3 col-md-pull-3 col-xs-pull-3">
             <div class="container">
             <div class="form-group col-lg-12 col-md-12 col-xs-12" style="margin-left: -25px">
-            <span id="LoginView1_LoginName1" style="color:Blue;font-family:Verdana;font-size:12pt;font-weight:bold;font-style:normal;">{{ $data['employee_id'] }}</span>
+            <span id="LoginView1_LoginName1" style="color:Blue;font-family:Verdana;font-size:12pt;font-weight:bold;font-style:normal;">{{ $data['id'] }}</span>
             </div>
                 <div class="form-group col-lg-12 col-md-12 col-xs-12" style="margin-top: -15px;margin-bottom: -15px;margin-left: -25px">
                     <span id="LoginView1_lblRole" class="color1">[employee]</span>
@@ -82,7 +82,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td style="width: 100px; height: 30px; text-align: center;">
-                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblStudentNo" style="font-size:Larger;font-weight:normal;">{{ $data['employee_id'] }}</span></td>
+                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblStudentNo" style="font-size:Larger;font-weight:normal;">{{ $data['id'] }}</span></td>
                                                                 <td style="text-align: center">
                                                                     <span id="ContentPlaceHolder1_Uc_student_info1_lblName" style="font-size:Larger;font-weight:normal;">{{ $data['name'] }}</span></td>
                                                                 <td style="width: 75px; text-align: center;">
@@ -104,7 +104,7 @@
                                                                     <span id="ContentPlaceHolder1_Uc_student_info1_lblEmail">{{ $data['email'] }}</span></td>
                                                                 <td>
                                                                     <span id="ContentPlaceHolder1_Uc_student_info1_Label6">Mobile No.</span>
-                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblMobileNo">{{ $data['contact'] }}</span></td>
+                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblMobileNo">{{ $data['contactNumber'] }}</span></td>
                                                             </tr>
                                                         </tbody></table>
                                                 </td>
@@ -127,12 +127,11 @@
     <div class="TableBg">
 
     </div>
-    <input type="hidden" name="ctl00$ContentPlaceHolder1$Uc_student_info1$hfProfileURL" id="ContentPlaceHolder1_Uc_student_info1_hfProfileURL" value="~/_student/access.aspx?type=profile"><input type="hidden" name="ctl00$ContentPlaceHolder1$Uc_student_info1$hfStudentNo" id="ContentPlaceHolder1_Uc_student_info1_hfStudentNo">
-
     <br>
     <br>
     <br>
-    <input type="hidden" name="username" value="{{ $data['username'] }}">
+     <input type="hidden" name="username" value="{{ $data['username'] }}">
+    <input type="hidden" name="id" value="{{ $data['id'] }}">
     <table id="ContentPlaceHolder1_tblMenu" style="margin: -10px; margin-left: 10px">
         <tbody><tr>
                 <td style="text-align: center; width: 150px">

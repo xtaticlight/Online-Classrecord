@@ -21,7 +21,7 @@ Route::get('/admindash','PagesController@showAdmindash');
 Route::get('/home','PagesController@showHome');
 Route::post('/access','SigningController@showAccess');
 Route::get('/test','PagesController@showTest');
-Route::post('/records','SigningController@showRecords');
+Route::get('/records','SigningController@showRecords');
 Route::post('/solve','SigningController@getSolve');
 Route::post('/subjects','SigningController@showSubjects');
 
