@@ -16,8 +16,8 @@
 
 
 
-        <form method="post" action="/e-class-record/public/records" id="form1" class="page_style">
-            <input type="hidden" name="username" value="{{ $userData['instructor_username'] }}">
+        <form method="get" action="/e-class-record/public/records" id="form1" class="page_style">
+            <input type="hidden" name="username" value="{{ $userData['username'] }}">
                 <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
                 <img id="Image1" src="./assets/img/banner.png" style="width:100%;"> </img>
 
@@ -34,7 +34,7 @@
                         <div class="form-group col-lg-4 col-md-4 col-xs-4 col-lg-pull-3 col-md-pull-3 col-xs-pull-3">
                             <div class="container">
                                 <div class="form-group col-lg-12 col-md-12 col-xs-12" style="margin-left: -25px">
-                                    <span id="LoginView1_LoginName1" style="color:Blue;font-family:Verdana;font-size:12pt;font-weight:bold;font-style:normal;">{{ $userData['instructor_id'] }}</span>
+                                    <span id="LoginView1_LoginName1" style="color:Blue;font-family:Verdana;font-size:12pt;font-weight:bold;font-style:normal;">{{ $userData['id'] }}</span>
                                 </div>
                                 <div class="form-group col-lg-12 col-md-12 col-xs-12" style="margin-top: -15px;margin-bottom: -15px;margin-left: -25px">
                                     <span id="LoginView1_lblRole" class="color1">[employee]</span>
@@ -83,7 +83,7 @@
                                     <table width="100%">
                                         <tbody><tr>
                                                 <td valign="middle" style="text-align: center; vertical-align:middle; padding:3px">
-                                                    <img id="ContentPlaceHolder1_Uc_student_info1_imgbStudent" src="./assets/img/{{ $userData['instructor_username'] }}.jpg" style="height:70px;width:75px;margin-top: -4px"></td>
+                                                    <img id="ContentPlaceHolder1_Uc_student_info1_imgbStudent" src="./assets/img/{{ $userData['username'] }}.jpg" style="height:70px;width:75px;margin-top: -4px"></td>
                                                 <td valign="top" style="width: 100%">
                                                     <table cellpadding="0" cellspacing="0" width="100%">
                                                         <tbody><tr>
@@ -99,9 +99,9 @@
                                                                             </tr>
                                                                             <tr>
                                                                                 <td style="width: 100px; height: 30px; text-align: center;">
-                                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblStudentNo" style="font-size:Larger;font-weight:normal;">{{ $userData['instructor_id'] }}</span></td>
+                                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblStudentNo" style="font-size:Larger;font-weight:normal;">{{ $userData['id'] }}</span></td>
                                                                                 <td style="text-align: center">
-                                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblName" style="font-size:Larger;font-weight:normal;">{{ $userData['instructor_name'] }}</span></td>
+                                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblName" style="font-size:Larger;font-weight:normal;">{{ $userData['name'] }}</span></td>
                                                                                 <td style="width: 75px; text-align: center;">
                                                                                     <span id="ContentPlaceHolder1_Uc_student_info1_lblGender" style="font-size:Larger;font-weight:normal;">{{ $userData['gender'] }}</span></td>
                                                                             </tr>
@@ -118,10 +118,10 @@
                                                                         <tbody><tr>
                                                                                 <td>
                                                                                     <span id="ContentPlaceHolder1_Uc_student_info1_Label5">Email</span>
-                                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblEmail">{{ $userData['email_add'] }}</span></td>
+                                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblEmail">{{ $userData['email'] }}</span></td>
                                                                                 <td>
                                                                                     <span id="ContentPlaceHolder1_Uc_student_info1_Label6">Mobile No.</span>
-                                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblMobileNo">{{ $userData['contact_number'] }}</span></td>
+                                                                                    <span id="ContentPlaceHolder1_Uc_student_info1_lblMobileNo">{{ $userData['contactNumber'] }}</span></td>
                                                                             </tr>
                                                                         </tbody></table>
                                                                 </td>
@@ -140,8 +140,9 @@
                             <span id="ContentPlaceHolder1_lblType" class="clTitle">Subjects</span><br>
                                 <br>
 
-
-                                    <span id="ContentPlaceHolder1_Uc_grades1_lblAYTerm" style="font-size:Larger;">2015-2016 - 1st Semester</span><br>
+                                    
+                                <span > {{ $subjectData[0]['schoolYear'] }} {{ $subjectData[0]['semester'] }}</span></h6>
+                                    <br>
                                         <br>
                                             <div>
                                                 <table cellspacing="0" rules="all" border="1" id="ContentPlaceHolder1_Uc_grades1_gvGrades" style="border-collapse:collapse;">
@@ -151,10 +152,10 @@
                                                         @foreach($subjectData as $data)
                                                         <tr>
                                                             <td style="width:45px;" align="center"><a href="./records"><span class="glyphicon glyphicon-folder-open"></span></a>
-                                                            </td><td style="width:120px;" align="center">{{$data['subject_code']}}</td><td style="width:200px;">{{$data['subject_title']}}</td><td style="width:100px;" align="center">{{$data['section_code']}}</td>
-                                                            
+                                                            </td><td style="width:120px;">&nbsp;{{$data['sub_code']}}</td><td style="width:200px;">&nbsp;{{ $data['name'] }}</td><td style="width:200px;">&nbsp;{{ $data['sec_code'] }}</td>
                                                         </tr>
                                                         @endforeach
+                                                        
                                                     </tbody></table>
 
                                             </div>
