@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\UsersController;
 use App\User;
 
-class PagesController extends Controller
-{
+class PagesController extends UsersController
+{   
+    protected $layout = "Main";
     public function __construct()
 	{
 		$this->middleware('guest');
@@ -17,19 +18,12 @@ class PagesController extends Controller
         
     function showLogin() {
 
-        return view('pages.login');
+        return view('pages.subpages.login');
     }
-    function showAdmindash() {
+   
+    function showMain() {
 
-      return view('pages.admin.dash');
-    }
-    function showTest() {
-
-      return view('pages.test');
-    }
-    function showHome() {
-
-      return view('pages.home');
+      return view('main');
     }
     function showRecords() {
 
