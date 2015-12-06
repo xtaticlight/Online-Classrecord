@@ -52,6 +52,7 @@
         <th>Name  </th>
         <th>Quiz1</th>
         <th>Quiz2</th>
+        <a href="../Main.blade.php"></a>
         <th></th>
         <th></th>
       </tr>
