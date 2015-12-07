@@ -22,9 +22,11 @@
             @include('pages.subpages.menu_option')
             <br />
             <br />
+            
             </div>
             
             @include('pages.layout.footer')
         </div>
+        
     </body>
 </html>
