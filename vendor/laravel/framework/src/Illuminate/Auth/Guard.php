@@ -361,7 +361,6 @@ class Guard implements GuardContract
     public function attempt(array $credentials = [], $remember = false, $login = true)
     {
         $this->fireAttemptEvent($credentials, $remember, $login);
-
         $this->lastAttempted = $user = $this->provider->retrieveByCredentials($credentials);
 
         // If an implementation of UserInterface was returned, we'll ask the provider

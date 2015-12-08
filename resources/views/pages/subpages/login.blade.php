@@ -15,7 +15,7 @@
 
     <body class="master_style">
 
-        <form method="post" action="/e-class-record/public/signin" id="form1" class="page_style">
+        <form method="post" action="{{ url('/login') }}" id="form1" class="page_style">
             <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
             @include('pages.layout.topbar')
             <div class="styleling" style="height: 200px"
@@ -23,11 +23,19 @@
                     <div class="form-group col-lg-3 col-md-3 col-xs-3">
                         <br/>
                         <label>Username:</label>
-                        <input type="text" tabindex="1" style="height: 22px; width: 120px" class="form-control" name="username" autofocus/>
-                        @if(Session::has('message'))
-                        <p class="text-danger mb" >{{ Session::get('message') }}</p>
-                        @endif
-                       
+                        <input  tabindex="1" style="height: 22px; width: 120px" class="form-control" name="username" >
+                         @if (count($errors) > 0)
+                                        <div class="alert alert-danger" style="padding: 1px; margin-bottom: 1px; margin-top: 3px; width: 196px">
+								@foreach ($errors->all() as $error)
+									{{ $error }}
+								@endforeach
+					</div>
+                                        @else
+                                        <br/>
+					@endif
+                                        <div >
+                      <span  style="color:#004000;">Visit</span> &gt; <a id="lbMain" class="text-nowrap" href="http://www.must.edu.ph/">MUST Website</a> 
+                </div>
                     </div>
                     
                     <div class="form-group col-lg-3 col-md-3 col-xs-3 col-lg-pull-1 col-md-pull-1 col-xs-pull-1">
@@ -43,10 +51,7 @@
                         @include('pages.layout.build_info')
                         
                     </div>
-                     <div >
-                      <span  style="color:#004000;">Visit</span> &gt;<a id="lbMain" class="text-nowrap" href="http://www.must.edu.ph/">MUST Website</a> 
-                </div>
-                 
+ 
             </div>
 
             @include('pages.layout.footer')

@@ -46,7 +46,7 @@
         </tr>
         @foreach($studentData as $data)
         <tr>
-            <td contenteditable="false">{{$data['id']}}</td>
+            <td contenteditable="false">{{$data['Student_id']}}</td>
             <td contenteditable="false">{{$data['name']}}</td>
             <td contenteditable="true"> 70</td>
             <td contenteditable="true"> 80</td>

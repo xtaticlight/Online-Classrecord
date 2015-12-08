@@ -2,92 +2,116 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\UsersController;
 use Illuminate\Http\Request;
 
 class MainController extends UsersController {
 
-    public function __construct() {
-        $this->middleware('guest');
-    }
-    
-  public function getIndex() {
-        if (Auth::check()) {
-            return Redirect::to('/')->with('message', 'You are now logged in!');
-        } else {
-            return Redirect::to('/login')
-                            ->with('message', 'Your username/password combination was incorrect')
-                            ->withInput();
-        }
-    }
-    
- public function showLogin() {
-        $hashed = \Hash::make('HighFive123!');
+    public function getIndex() {
         if (\Auth::check()) {
-            return Redirect::to('/')->with('message', 'You are logged in!');
+            //  $userData[] =  \Auth::user();
+            //    dd($userData);
+            return view('pages.mainpages.home');
         } else {
-            return \View::make('pages.subpages.login')->with('hash', $hashed);
+            return view('pages.subpages.login');
         }
     }
 
-    public function postSignin() {
-        $username = \Input::get('username');
-        if(is_null($username)||(empty($username)))
-        {
-            return \Redirect::back()
-                            ->with('message', 'Username is empty.')
-                            ->withInput();
-        }
-        $userData = $this->getUserData($username);
-        if(empty($userData['username'])||  is_null($userData['username']))
-        {
-            return \Redirect::to('/login')
-                            ->with('message', 'Your Username doesn\'t exist. ')
-                            ->withInput();
-        }
-        if (empty($userData['password']) || is_null($userData['password'])) {
-            $userData['password'] = \Hash::make($userData['password']);
-           $userData->update();
-        }
-        if (\Auth::attempt(array('username' => \Input::get('username'), 'password' => \Input::get('password')))) {
-
-            return \Redirect::to('/home')->with('message', 'You are now logged in.');
+    public function getHome() {
+        if (\Auth::check()) {
+            return View('pages.mainpages.home');
         } else {
-           // dd($userData);
-            return \Redirect::back()
-                            ->with('message', 'Your Username / Password combination was incorrect.')
-                            ->withInput();
+            return \Redirect::to('/')->withErrors('Please login first to access home.');
         }
     }
 
-    function showAccess() {
-        $id = \Input::get('id');
-        $username = \Input::get('username');
-        $userData = $this->getUserData($username);
-        $courseData = $this->getCourse($id);
-        return view('pages.mainpages.browse_sy_semester')->with('userData', $userData)->with('courseData', $courseData);
+    public function getAccess() {
+        if (\Auth::check()) {
+            //\Session::forget('schoolYear');
+            return View('pages.mainpages.browse_sy_semester');
+        } else {
+            return \Redirect::to('/')->withErrors('You need to login first to access.');
+        }
     }
 
-    function showSubjects() {
-        $username = \Input::get('username');
-        $id = \Input::get('id');
-        $schoolYear = \Input::get('schoolYear');
-        $semester = \Input::get('semester');
-        $getSubject = $this->getSubject($schoolYear, $semester, $id);
-        //  dd($getSubject);
-        $userData = $this->getUserData($username);
-        return view('pages.mainpages.browse_subjects')->with('userData', $userData)->with('subjectData', $getSubject);
+    public function postAccess() {
+        if (\Auth::check()) {
+            return View('pages.mainpages.browse_sy_semester');
+        } else {
+            return \Redirect::to('/');
+        }
     }
 
-    function getRecords($subject_id, $username) {
-        $userData = $this->getUserData($username);
-        $studentData = $this->getStudentData($subject_id, $username);
-        return view('pages.mainpages.browse_student_file')->with('userData', $userData)->with('studentData', $studentData);
+    public function getRecords() {
+        if (\Auth::check()) {
+            return View('pages.mainpages.browse_student_file');
+        } else {
+            return \Redirect::to('/')->withErrors('Login first to access the records.');
+        }
     }
 
-    function getSolve() {
-        $username = \Input::get('username');
-        $userData = $this->getUserData($username);
-        return view('pages.records')->with('userData', $userData);
+    public function getLogin() {
+        if (\Auth::check()) {
+            return \Redirect::to('home');
+        } else {
+            return view('pages.subpages.login');
+        }
+    }
+
+    public function postLogin(Request $request) {
+        $this->validate($request, [
+            'username' => 'required', 'password' => 'required',
+        ]);
+
+        $credentials = $request->only('username', 'password');
+
+        if (\Auth::attempt($credentials, $request->has('remember'))) {
+            return redirect()->intended($this->redirectPath());
+        }
+
+        return redirect($this->loginPath())
+                        ->withInput($request->only('username', 'remember'))
+                        ->withErrors([
+                            'username' => $this->getFailedLoginMessage(),
+        ]);
+    }
+
+    function postSubjects() {
+        if (\Auth::check()) {
+            $id = \Auth::user()->id;
+            $schoolYear = \Input::get('schoolYear');
+            \Session::put('schoolYear', $schoolYear);
+            $semester = \Input::get('semester');
+            \Session::put('semester', $semester);
+            $getSubject = $this->generateSubject($schoolYear, $semester, $id);
+            $userData = \Auth::user();
+            return view('pages.mainpages.browse_subjects')->with('userData', $userData)->with('subjectData', $getSubject);
+        } else {
+            return view('pages.subpages.login');
+        }
+    }
+
+    function getSubjects() {
+        if (\Auth::check()) {
+            $id = \Auth::user()->id;
+            $schoolYear = \Session::get('schoolYear');
+            $semester = \Session::get('semester');
+            $getSubject = $this->generateSubject($schoolYear, $semester, $id);
+            $userData = \Auth::user();
+            return view('pages.mainpages.browse_subjects')->with('userData', $userData)->with('subjectData', $getSubject);
+        } else {
+            return \Redirect::to('/')->withErrors('Login first to view the subjects.');
+        }
+    }
+
+    function getClass($subject_id) {
+        if (\Auth::check()) {
+            $username = \Auth::user()->username;
+            $studentData = $this->getStudentData($subject_id, $username);
+            return view('pages.mainpages.browse_student_file')->with('studentData', $studentData);
+        } else {
+            return \Redirect::to('/')->withErrors('Login first to view the subjects.');
+        }
     }
 
     /**
@@ -96,7 +120,7 @@ class MainController extends UsersController {
      * @return string
      */
     protected function getFailedLoginMessage() {
-        return 'These credentials do not match our records.';
+        return 'Incorrect username or password.';
     }
 
     /**

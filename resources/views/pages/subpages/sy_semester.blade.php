@@ -1,6 +1,6 @@
-<form method="post" action="/e-class-record/public/subjects" id="form1">
+<form method="post" action="{{ url('/subjects') }}" id="form1">
     <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
-    <input type="hidden" name="username" value="{{ $userData['username'] }}">
+    <input type="hidden" name="username" value="{{ Auth::user()->username}}">
     <br>
     <span class="clTitle">Records</span><br>
     <br>
@@ -22,8 +22,8 @@
                     </select></td>
                 <td>
                     &nbsp;
-                    <input type="hidden" name="id" value="{{ $userData['id'] }}">
-                    <input type="hidden" name="username" value="{{ $userData['username'] }}">
+                    <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                    <input type="hidden" name="username" value="{{Auth::user()->username }}">
                     <select name="semester" id="form1">
                         <option>1st Semester</option>
                         <option>2nd Semester</option>
