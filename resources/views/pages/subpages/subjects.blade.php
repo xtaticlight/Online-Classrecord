@@ -10,7 +10,7 @@
             </tr>
             @foreach($subjectData as $data)
             <tr>
-                <td style="width:45px;" align="center"><form method="post" action="/e-class-record/public/records" id="form1">
+                <td style="width:45px;" align="center"><form method="post" action="./records" id="form1">
                     <a href="./class/{{$data['id']}}">
                     </input><span class="glyphicon glyphicon-folder-open"></span></a>
                 </td>

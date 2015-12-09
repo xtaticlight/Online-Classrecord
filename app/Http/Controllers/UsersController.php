@@ -13,8 +13,28 @@ abstract class UsersController extends BaseController
      function  getStudentData($subject_id){
         $query = DB::table('students')->where('classes_id',$subject_id)->get();
         $studentlist = json_decode(json_encode($query), true);
-        return  $studentlist; 
+        
+        return  $studentlist;
     }
+    
+    function getActivitiesData($subject_id,$term) {
+        $studentlist = $this->getStudentData($subject_id);
+        
+        foreach ($studentlist as $data) {
+            $query = DB::table('records')->where('students_id',$data['id'])->where('term',$term)->get();
+            $recordslist[] = json_decode(json_encode($query), true);
+            $records = array_column($recordslist, 0);
+            
+        }
+        foreach ($records as $records) {
+                $query = DB::table('activities')->where('records_id',$records['id'])->get();
+                $activitylist[][] = json_decode(json_encode($query), true);
+                $activities = array_column($activitylist, 0);
+            }
+        
+        return  $activities;
+    }
+    
     function generateSubject($schoolYear, $semester, $id) {
         $query = \DB::table('courses')->where('users_id', $id)->where('schoolYear', $schoolYear)->where('semester', $semester)->get();
         $resultArray = json_decode(json_encode($query), true);

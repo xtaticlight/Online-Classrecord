@@ -107,8 +107,25 @@ class MainController extends UsersController {
     function getClass($subject_id) {
         if (\Auth::check()) {
             $username = \Auth::user()->username;
-            $studentData = $this->getStudentData($subject_id, $username);
-            return view('pages.mainpages.browse_student_file')->with('studentData', $studentData);
+            $term = 'MIDTERM';
+            \Session::put('subject_id',$subject_id);
+            $studentData = $this->getStudentData($subject_id);
+            $activitiesData = $this->getActivitiesData($subject_id, $term);
+            
+            return view('pages.mainpages.browse_student_file')->with('studentData', $studentData)->with('activitiesData', $activitiesData);
+        } else {
+            return \Redirect::to('/')->withErrors('Login first to view the subjects.');
+        }
+    }
+    
+    function postClass() {
+        if (\Auth::check()) {
+            $term = \Input::get('term');
+            $subject_id = \Session::get('subject_id');
+            $studentData = $this->getStudentData($subject_id);
+            $activitiesData = $this->getActivitiesData($subject_id, $term);
+            
+            return view('pages.mainpages.browse_student_file')->with('studentData', $studentData)->with('term',$term)->with('subject_id',$subject_id)->with('activitiesData', $activitiesData);
         } else {
             return \Redirect::to('/')->withErrors('Login first to view the subjects.');
         }

@@ -24,20 +24,20 @@
                         <br/>
                         <label>Username:</label>
                         <input  tabindex="1" style="height: 22px; width: 120px" class="form-control" name="username" >
-                         @if (count($errors) > 0)
-                                        <div class="alert alert-danger" style="padding: 1px; margin-bottom: 1px; margin-top: 3px; width: 196px">
-								@foreach ($errors->all() as $error)
-									{{ $error }}
-								@endforeach
-					</div>
-                                        @else
-                                        <br/>
-					@endif
-                                        <div >
-                      <span  style="color:#004000;">Visit</span> &gt; <a id="lbMain" class="text-nowrap" href="http://www.must.edu.ph/">MUST Website</a> 
-                </div>
+                            @if (count($errors) > 0)
+                            <div class="alert alert-danger" style="padding: 1px; margin-bottom: 1px; margin-top: 3px; width: 196px">
+                                @foreach ($errors->all() as $error)
+                                {{ $error }}
+                                @endforeach
+                            </div>
+                            @else
+                            <br/>
+                            @endif
+                            <div >
+                                <span  style="color:#004000;">Visit</span> &gt; <a id="lbMain" class="text-nowrap" href="http://www.must.edu.ph/">MUST Website</a> 
+                            </div>
                     </div>
-                    
+
                     <div class="form-group col-lg-3 col-md-3 col-xs-3 col-lg-pull-1 col-md-pull-1 col-xs-pull-1">
                         <br/>
                         <label>Password:</label>
@@ -49,12 +49,12 @@
                     </div>
                     <div class = "pull-right">
                         @include('pages.layout.build_info')
-                        
-                    </div>
- 
-            </div>
 
-            @include('pages.layout.footer')
+                    </div>
+
+                </div>
+
+                @include('pages.layout.footer')
         </form>	
 
     </body></html>
