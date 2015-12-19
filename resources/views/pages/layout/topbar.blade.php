@@ -1,1 +1,1 @@
-            <img id="Image1" src="/e-class-record/public/assets/img/banner.png" style="width:100%;"> </img>
+            <img id="Image1" src="../assets/img/banner.png" style="width:100%;"> </img>

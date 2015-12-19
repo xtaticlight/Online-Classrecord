@@ -3,9 +3,7 @@
     <table id="ContentPlaceHolder1_tblMenu" style="margin: -10px; margin-left: 10px">
         <tbody><tr>
                 <td style="text-align: center; width: 150px">
-                    <button type="submit">
-                        <img id="ContentPlaceHolder1_Image4" src="./assets/img/classrecord.png" style="margin-bottom: 7px">
-                    </button>
+                    <input type="image" name="submit" src="./assets/img/classrecord.png" border="0" alt="Submit"/>
                 </td>
             </tr>
             <tr>

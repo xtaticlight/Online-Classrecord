@@ -11,13 +11,39 @@ abstract class UsersController extends BaseController
     use DispatchesJobs, ValidatesRequests;
     
      function  getStudentData($subject_id){
-        $query = DB::table('students')->where('classes_id',$subject_id)->get();
+        $query = DB::table('students')->where('load_id',$subject_id)->get();
         $studentlist = json_decode(json_encode($query), true);
         
         return  $studentlist;
     }
     
     function getActivitiesData($subject_id,$term) {
+        $query = DB::table('students')->join('records','records.students_id','=','students.id')->where('records.term',$term)->get();//->join('activities', 'activities.records_id','=','records.id')->select('records.students_id','records.term','records.exam_score','records.exam_total','records.exam_grade','records.term_grade','records.remarks','students.sname','activities.*')->get();
+        $records = json_decode(json_encode($query), true);
+        //dd($records);
+        foreach ($records as $records) {
+                $query = DB::table('activities')->join('records', 'activities.records_id','=','records.id')->join('students', 'students.id','=','records.students_id')->select('records.students_id','records.term','records.exam_score','records.exam_total','records.exam_grade','records.term_grade','records.remarks','students.sname','activities.*')->where('records.id',$records['id'])->get();
+                $activitylist[][] = json_decode(json_encode($query), true);
+                $activities = array_column($activitylist, 0);
+            }
+            //dd($activities);
+            
+        return  $activities;
+    }
+    
+    function getRecordsData($studentlist,$term) {
+        
+        foreach ($studentlist as $data) {
+            $query = DB::table('records')->where('students_id',$data['id'])->where('term',$term)->get();
+            $recordslist[] = json_decode(json_encode($query), true);
+            $records = array_column($recordslist, 0);
+            
+        }
+        //dd($records);
+        return $records;
+    }
+    
+    function getRData($subject_id,$term) {
         $studentlist = $this->getStudentData($subject_id);
         
         foreach ($studentlist as $data) {
@@ -26,31 +52,27 @@ abstract class UsersController extends BaseController
             $records = array_column($recordslist, 0);
             
         }
+        //dd($records);
         foreach ($records as $records) {
-                $query = DB::table('activities')->where('records_id',$records['id'])->get();
+                $query = DB::table('activities')->join('records', 'records.id', '=', 'activities.records_id')->join('students', 'students.id', '=', 'records.students_id')->select('activities.*', 'students.id', 'students.students_name')->where('records_id',$records['id'])->get();
                 $activitylist[][] = json_decode(json_encode($query), true);
                 $activities = array_column($activitylist, 0);
             }
-        
+            //dd($activities);
+        return  $activities;
+    }
+    
+    function getActivitiesList($subject_id) {
+        $students_list = getStudentData($subject_id);
+        $query = DB::table('activities')->where('records_id',$subject_id)->get();
+        $studentlist = json_decode(json_encode($query), true);
         return  $activities;
     }
     
     function generateSubject($schoolYear, $semester, $id) {
-        $query = \DB::table('courses')->where('users_id', $id)->where('schoolYear', $schoolYear)->where('semester', $semester)->get();
+        $query = \DB::table('load')->where('school_year_sy', $schoolYear)->get();
         $resultArray = json_decode(json_encode($query), true);
-
-        foreach ($resultArray as $course) {
-            $query = \DB::table('subjects')->where('users_id', $course['users_id'])->where('courses_id', $course['id'])->get();
-            $subjectData1[] = json_decode(json_encode($query), true);
-        }
-        $subjectData2 = array_column($subjectData1, 0);
-        foreach ($subjectData2 as $course) {
-            $query = \DB::table('subjects')->join('classes', 'subjects.id', '=', 'classes.subjects_id')->join('courses', 'subjects.courses_id', '=', 'courses.id')->select('subjects.*', 'classes.*', 'courses.schoolYear', 'courses.semester')->where('classes.users_id', $course['users_id'])->where('classes.subjects_id', $course['id'])->get();
-            $subjectDatalist[] = json_decode(json_encode($query), true);
-            $subjectData = $subjectDatalist;
-        }
-        $subjectData = array_column($subjectData, 0);
-        return $subjectData;
+        return $resultArray;
     }
     
     

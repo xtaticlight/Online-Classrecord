@@ -106,14 +106,20 @@ class MainController extends UsersController {
 
     function getClass($subject_id) {
         if (\Auth::check()) {
-            $username = \Auth::user()->username;
-            $term = 'MIDTERM';
+            if (\Session::get('term')!='Midterm' && \Session::get('term')!='Final') {
+                $term ='Midterm';
+            }
+            else {
+                $term = \Session::get('term');
+            }
+            
             \Session::put('subject_id',$subject_id);
-            $studentData = $this->getStudentData($subject_id);
+
             $activitiesData = $this->getActivitiesData($subject_id, $term);
             
-            return view('pages.mainpages.browse_student_file')->with('studentData', $studentData)->with('activitiesData', $activitiesData);
-        } else {
+            return view('pages.mainpages.browse_student_file')->with('term',$term)->with('activitiesData', $activitiesData)->with('subject_id',$subject_id);
+        } else {            //$activitiesName = $this->getActivitiesList($subject_id);
+
             return \Redirect::to('/')->withErrors('Login first to view the subjects.');
         }
     }
@@ -121,14 +127,36 @@ class MainController extends UsersController {
     function postClass() {
         if (\Auth::check()) {
             $term = \Input::get('term');
+            \Session::put('term',$term);
             $subject_id = \Session::get('subject_id');
-            $studentData = $this->getStudentData($subject_id);
+            //dd($recordsData);
             $activitiesData = $this->getActivitiesData($subject_id, $term);
-            
-            return view('pages.mainpages.browse_student_file')->with('studentData', $studentData)->with('term',$term)->with('subject_id',$subject_id)->with('activitiesData', $activitiesData);
+            //dd($activitiesData);
+            return view('pages.mainpages.browse_student_file')->with('term',$term)->with('subject_id',$subject_id)->with('activitiesData', $activitiesData);
         } else {
             return \Redirect::to('/')->withErrors('Login first to view the subjects.');
         }
+    }
+    
+    function postUpdate() {
+        if (\Auth::check()) {
+            $term = \Input::get('term');
+            $activitiesNo = \Input::get('activitiesNo');
+            for ($i=1;$i<$activitiesNo;$i++) {
+                $activities_id = \Input::get("activities".$i);
+                $score = \Input::get($activities_id);
+                \DB::table('activities')->where('id',$activities_id)->update(array('score'=>$score));
+            }
+            return \Redirect::back();
+        }
+    }
+    
+    function postAddactivity() {
+        $selected_act = \Input::get('selected_act');
+        $total = \Input::get('total');
+        $records_id = \Input::get('records_id');
+        \DB::insert('insert into activities (act_name, total, records_id) values (?, ?, ?)', array($selected_act,$total,$records_id));
+        return \Redirect::back();
     }
 
     /**

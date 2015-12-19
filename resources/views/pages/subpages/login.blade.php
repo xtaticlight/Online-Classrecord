@@ -20,7 +20,7 @@
             @include('pages.layout.topbar')
             <div class="styleling" style="height: 200px"
                  <div class="container animated fadeIn">
-                    <div class="form-group col-lg-3 col-md-3 col-xs-3">
+                     <div class="form-group col-lg-3 col-md-3 col-xs-3" style="margin-right: -50px">
                         <br/>
                         <label>Username:</label>
                         <input  tabindex="1" style="height: 22px; width: 120px" class="form-control" name="username" >
@@ -38,7 +38,7 @@
                             </div>
                     </div>
 
-                    <div class="form-group col-lg-3 col-md-3 col-xs-3 col-lg-pull-1 col-md-pull-1 col-xs-pull-1">
+                    <div class="form-group col-lg-3 col-md-3 col-xs-3 col-lg-pull-1 col-md-pull-1 col-xs-pull-1" style="margin-right: -50px">
                         <br/>
                         <label>Password:</label>
                         <input type="password" tabindex="2" style="height: 22px; width: 120px" class="form-control" name="password">
@@ -47,8 +47,13 @@
                         <br/>
                         <input class="btn-theme btn-block" tabindex="3" style="height: 22px; width: 50px" type="submit" value="Login"/>
                     </div>
-                    <div class = "pull-right">
-                        @include('pages.layout.build_info')
+                     <div class = "pull-right">
+                         <div class="form-group col-lg-3 col-md-3 col-xs-3"></div>
+                        <div class="form-group col-lg-3 col-md-3 col-xs-3" style="margin-top: -60px; margin-left: 105px">
+                            <span id="lblVersion" style="color:#004000;" class="text-nowrap">Build 2015.12.5</span>
+                            <span id="Label2" class="color1" style="font-family:Bodoni MT;font-size:38pt;">ESOnline</span><br>
+                                <span id="Label3" style="color: #000000" class="text-nowrap">Online Class Record Encoding</span>
+                        </div>
 
                     </div>
 
