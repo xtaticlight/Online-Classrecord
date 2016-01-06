@@ -1,8 +1,47 @@
+<div>
+<div>
+<span class="clTitle">Class Records</span><span style="font-family: Verdana, Arial;font-size: 14pt;"> | {{$term}}</span>
+</div>
+    <div class="pull-right" style="margin-top: -26px">
+<form method="post" action="./class" id="form1">
+<input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+<span style="height: 25px;font-size: 11px;" class = "glyphicon glyphicon-tasks">  </span>&nbsp;<select name="term" style="line-height: 150px;height: 25px;font-size: 11px;" onchange="this.form.submit();">
+    <option>Change Term</option>
+    <option>Midterm</option>
+    <option>Final</option>
+</select>
+</form>
+</div>
+</div>
 <br>
-<span class="clTitle">Class Records</span><br>
-<span style="font-size:Larger;">2015-2016 - 1st Semester </span>&gt;<span style="font-size:Larger;"> {{$term}}</span>  
 <br>
-<br>
+@if($activitiesData==null)
+<div id="table" class="table-responsive">
+    <table class = "table table-bordered">
+         <tr class = "TableHeader" style="text-transform: capitalize"> 
+                    <th style="height: 47px">ID No.</th>
+                    <th style="height: 47px">Name</th>
+                    <th style="height: 47px">Grade</th>
+                    <th style="height: 47px">Remarks</th>
+         </tr>
+           <tr>
+                    <td></td>
+
+                    <td>No Data To Display</td>
+                    <td></td>
+                    <td></td>
+
+                </tr>
+    </table>
+          <div class = pull-right style="margin-bottom: 15px">
+              <button id="export-btn" style="height: 30px;"class="btn btn-info" disabled="true"><span class="glyphicon glyphicon-download-alt"></span> Import</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button id="export-btn" style="height: 30px;"class="btn btn-success"disabled="true"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" data-toggle = "modal" data-target = "#myModal1" style  = "height: 30px;" class="btn btn-warning"disabled="true"><span class = "glyphicon glyphicon-open"></span> Post</button>
+        </div>
+</div>
+@else
 <div id="table" class="table-responsive">
     <form method="post" action="{{ url('/update') }}" id="updateform" >
 
@@ -19,7 +58,7 @@
                 <tr>
 
                     <td class="TableHeader" style="background-color: #449d44;" contenteditable="false">{{$data[0]['students_id']}}</td>
-                    <td style="background-color: #FCFB98; white-space: nowrap;" contenteditable="false">{{$data[0]['sname']}}</td>
+                    <td style="background-color: #FCFB98; " contenteditable="false">{{$data[0]['sname']}}</td>
 
 
                 </tr>
@@ -30,7 +69,7 @@
                 </tr>
             </table>
             <div class = "table table-bordered form-group col-lg-4 col-md-4 col-xs-4" style="overflow-x: auto; width: 542px; padding: 0px; border: 0px">
-                <table class = "table table-bordered" style="height: 132px;margin-bottom: -5px;border-bottom-width: 0px;margin-bottom: 0px;">
+                <table class = "table table-bordered" style="margin-bottom: -5px;border-bottom-width: 0px;margin-bottom: 0px;">
 
                     <tr class = "TableHeader" style="text-transform: capitalize"> 
 
@@ -59,7 +98,7 @@
                         ?>
                         @foreach($data as $data1)
 
-                        <td><input data-toggle="tooltip" data-placement="top" title="{{$data1['act_name']}}" tabindex="{{$count++}}" style="height: 15px; width: 54px; border: 0" class="form-login" name="{{ $data1['id'] }}" value="{{ $data1['score'] }}"></td>
+                        <td><input data-toggle="tooltip" data-placement="top" title="{{$data1['act_name']}}" tabindex="{{$count++}}" style="height: 15px;font-size:14px; width: 54px; border: 0;padding: 0px 0px 0px;"  name="{{ $data1['id'] }}" value="{{ $data1['score'] }}"></td>
                     <input type="hidden" name="activities{{$activitiesNo}}" value="{{$data1['id']}}" />
                     <?php
                     $activitiesNo++;
@@ -98,8 +137,8 @@
                     @foreach($activitiesData as $data)
                     <?php if ($end == 'false'):
                         ?>
-                    <th style="height: 47px">{{$data[0]['term']}} Exam</th>
-                        <th>{{$data[0]['term']}} Grade</th>
+                        <th style="height: 47px">{{$data[0]['term']}} Exam</th>
+                        <th style="height: 47px">{{$data[0]['term']}} Grade</th>
                         <?php
                     endif;
                     $end = 'true';
@@ -114,7 +153,7 @@
 
                     <td style="background-color: #FCFB98;"contenteditable="false" >{{$data[0]['exam_score']}}</td>
                     <td  style="background-color: #FCFB98;"contenteditable="false">{{$data[0]['term_grade']}}</td>
-                    <td  style="background-color: #a9d86e;"contenteditable="true">{{$data[0]['remarks']}}</td>
+                    <td  style="background-color: #a9d86e;"contenteditable="false">{{$data[0]['remarks']}}</td>
 
                 </tr>
                 @endforeach
@@ -156,21 +195,22 @@
     <br>
     <br>
 </div>
+@endif
 <!-- Modal -->
 <form method="post" action="{{ url('/addactivity') }}" id="updateform">
-<div class="modal fade" id="myModal" role="dialog">
-    
-    <div class="modal-dialog">
+    <div class="modal fade" id="myModal" role="dialog">
 
-        <!-- Modal content-->
-        
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4><span class="glyphicon glyphicon-plus "></span> Add Activity</h4>
-            </div>
-            <div class="modal-body" style="padding:40px 50px;">
-                
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4><span class="glyphicon glyphicon-plus "></span> Add Activity</h4>
+                </div>
+                <div class="modal-body" style="padding:40px 50px;">
+
                     <div class="form-group col-lg-6">
                         <h5 for="activity"><span class="glyphicon glyphicon-file"></span> Activity Name </h5>
 
@@ -185,16 +225,16 @@
                         <h5 for="activity"><span class="glyphicon glyphicon-tasks"></span> Total Score </h5>
                         <input type="text" class="form-control" name="total" placeholder="Total Score">
                     </div>
-                
-            </div>
-            <div class = "modal-footer">
-                <button Data-dismiss ="modal" class="btn btn-success btn-danger"><span class="glyphicon glyphicon-remove"></span>  Cancel</button>
-                <button type="submit" class="btn btn-success btn-success"><span class="glyphicon glyphicon-plus"></span>  Add</button>
-            </div>
-        </div>
 
+                </div>
+                <div class = "modal-footer">
+                    <button Data-dismiss ="modal" class="btn btn-success btn-danger"><span class="glyphicon glyphicon-remove"></span>  Cancel</button>
+                    <button type="submit" class="btn btn-success btn-success"><span class="glyphicon glyphicon-plus"></span>  Add</button>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
 </form>
 <!-- Modal -->
 <div class="modal fade" id="myModal1" role="dialog">
@@ -217,10 +257,8 @@
 
     </div>
 </div>
-
 <script>
     $(document).ready(function () {
-        
     });
-    
+
 </script>

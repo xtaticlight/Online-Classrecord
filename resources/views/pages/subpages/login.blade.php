@@ -1,5 +1,4 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0047)http://utilities.must.edu.ph/MUST_SIS/home.aspx -->
 <link href="./assets/css/bootstrap.css" rel="stylesheet"/>
 <link href="./assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link href="./assets/css/style.css" rel="stylesheet"> </link>
@@ -45,7 +44,7 @@
                     </div>
                     <div class="form-group col-lg-3 col-md-3 col-xs-3 col-lg-pull-2 col-md-pull-2 col-xs-pull-2" style="margin-top: 20px">
                         <br/>
-                        <input class="btn-theme btn-block" tabindex="3" style="height: 22px; width: 50px" type="submit" value="Login"/>
+                        <input class="btn btn-primary " tabindex="3" style="height: 22px; width: 50px; padding:0px 0px 10px 0px;" type="submit" value="Login"/>
                     </div>
                      <div class = "pull-right">
                          <div class="form-group col-lg-3 col-md-3 col-xs-3"></div>

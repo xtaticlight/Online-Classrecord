@@ -11,24 +11,33 @@ class MainController extends UsersController {
         if (\Auth::check()) {
             //  $userData[] =  \Auth::user();
             //    dd($userData);
-            return view('pages.mainpages.home');
+            return view('pages.mainpages.browse_subjects');
         } else {
             return view('pages.subpages.login');
         }
     }
 
-    public function getHome() {
-        if (\Auth::check()) {
-            return View('pages.mainpages.home');
-        } else {
-            return \Redirect::to('/')->withErrors('Please login first to access home.');
-        }
-    }
+   // public function getHome() {
+      //  if (\Auth::check()) {
+            //$user_id = \Auth::user()->id;
+            //$check = $this->checkSY($user_id);
+            //$check = $this->checkload($user_id);
+            //$check = $this->checkstudents($user_id);
+            //$check = $this->checkrecords($user_id);
+            //dd($check);
+      //      return View('pages.mainpages.home');
+      //  } else {
+       //     return \Redirect::to('/')->withErrors('Please login first to access home.');
+     //   }
+//}
 
-    public function getAccess() {
+   /* public function getAccess() {
         if (\Auth::check()) {
             //\Session::forget('schoolYear');
-            return View('pages.mainpages.browse_sy_semester');
+            $user_id = \Auth::user()->id;
+            $SYlist = $this->checkSY($user_id);
+            //dd($SYlist);
+            return View('pages.mainpages.browse_subjects')->with('SYlist',$SYlist);
         } else {
             return \Redirect::to('/')->withErrors('You need to login first to access.');
         }
@@ -36,12 +45,14 @@ class MainController extends UsersController {
 
     public function postAccess() {
         if (\Auth::check()) {
-            return View('pages.mainpages.browse_sy_semester');
+            $user_id = \Auth::user()->id;
+            $SYlist = $this->checkSY($user_id);
+            return View('pages.mainpages.browse_subjects')->with('SYlist',$SYlist);
         } else {
             return \Redirect::to('/');
         }
     }
-
+*/
     public function getRecords() {
         if (\Auth::check()) {
             return View('pages.mainpages.browse_student_file');
@@ -52,7 +63,7 @@ class MainController extends UsersController {
 
     public function getLogin() {
         if (\Auth::check()) {
-            return \Redirect::to('home');
+            return \Redirect::to('subjects');
         } else {
             return view('pages.subpages.login');
         }
@@ -85,6 +96,7 @@ class MainController extends UsersController {
             \Session::put('semester', $semester);
             $getSubject = $this->generateSubject($schoolYear, $semester, $id);
             $userData = \Auth::user();
+          //dd($getSubject);
             return view('pages.mainpages.browse_subjects')->with('userData', $userData)->with('subjectData', $getSubject);
         } else {
             return view('pages.subpages.login');
@@ -106,28 +118,28 @@ class MainController extends UsersController {
 
     function getClass($subject_id) {
         if (\Auth::check()) {
-            if (\Session::get('term')!='Midterm' && \Session::get('term')!='Final') {
-                $term ='Midterm';
+            if (\Input::get('term')==null) {
+                $term='Midterm';
             }
             else {
-                $term = \Session::get('term');
+                $term = 'Final';
             }
-            
+            //  dd($term);
             \Session::put('subject_id',$subject_id);
 
             $activitiesData = $this->getActivitiesData($subject_id, $term);
-            
+        //  dd($term);
             return view('pages.mainpages.browse_student_file')->with('term',$term)->with('activitiesData', $activitiesData)->with('subject_id',$subject_id);
         } else {            //$activitiesName = $this->getActivitiesList($subject_id);
 
             return \Redirect::to('/')->withErrors('Login first to view the subjects.');
         }
     }
-    
+  
     function postClass() {
         if (\Auth::check()) {
             $term = \Input::get('term');
-            \Session::put('term',$term);
+            //dd($term);
             $subject_id = \Session::get('subject_id');
             //dd($recordsData);
             $activitiesData = $this->getActivitiesData($subject_id, $term);
@@ -188,7 +200,7 @@ class MainController extends UsersController {
             return $this->redirectPath;
         }
 
-        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/home';
+        return property_exists($this, 'redirectTo') ? $this->redirectTo : '/subjects';
     }
 
     /**
